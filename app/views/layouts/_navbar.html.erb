@@ -1,3 +1,28 @@
-<nav class="navbar" id="navbar">
+<nav class="navbar navbar-inverse bg-inverse navbar-expand-md fixed-top" id="navbar">
+  <div class="container">
     <%= link_to "Past Papers", root_path, class: "navbar-brand" %>
+    
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navToggler" aria-controls="navToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navToggler">
+      
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <%= link_to "About", root_path, class: "nav-item" %>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ml-auto center">
+        <li>
+          <%= link_to "Sign Up ", root_path, class: "nav-item" %> 
+        </li>
+        <li>
+          <%= link_to " Login", root_path, class: "nav-item" %>  
+        </li> 
+      </ul>
+      
+    </div>
+  </div>  
 </nav>
