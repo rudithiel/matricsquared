@@ -1,23 +1,20 @@
 @import "bootstrap";
 
-html {
-  font-size: 17px;
-}
-
 .navbar {
   background-color: #03a9f4;  
   color: white;
 }
 
 .navbar-brand {
+  font-size: 2rem;
   color: white;
-  
   &:hover {
     color: white;
   }
 }
 
 .nav-item {
+  font-size: 1.6rem !important;
   color: white;
   margin: 5px;
   &:hover {
@@ -37,7 +34,6 @@ html {
 
 @media (max-width: 768px){
     .nav-item {
-      font-size: 1.5rem;
       margin-top: 10px;
       margin-bottom: 10px;
     }

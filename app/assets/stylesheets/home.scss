@@ -1,4 +1,13 @@
 
+.info-header {
+  color: white;
+  display: block;
+}
+
+.info-heading {
+  font-weight: 100;
+}
+
 .carousel-img{
   height : 70% !important;
 }
@@ -10,7 +19,18 @@
   width : 100%;
 }
 
+.carousel-indicators > li {
+  color: grey;
+}
+
+#how-it-works {
+  width: 100%;
+}
+
 @media (min-width: 1200px){
+  .info-header {
+    height: 130px;
+  }
   .carousel {
     height : 700px !important;
   }
@@ -20,21 +40,33 @@
 }
 
 @media (max-width: 1200px){
+  .info-header {
+    height: 100px;
+  }
   .carousel-img {
     width: 100%;
   }
 }
 
-@media (min-width: 750px){
+@media (min-width: 375px){
+  .info-header {
+    height: 70px;
+  }
   .carousel-img-1 {
     content:url("mobile-friendly");
   }
   .carousel-img-2 {
     content:url("track-progress");
   }
+  #how-it-works {
+    content:url("how-it-works");
+  }
 }
 
-@media (max-width: 750px){
+@media (max-width: 375px){
+  .info-header {
+    height: 50px;
+  }
   .carousel {
     height: 1220px;
   }
@@ -43,5 +75,8 @@
   }
   .carousel-img-2 {
     content:url("track-progress-MOBILE");
+  }
+  #how-it-works {
+    content:url("how-it-works-MOBILE");
   }
 }
