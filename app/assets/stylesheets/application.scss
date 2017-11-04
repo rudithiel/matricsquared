@@ -1,7 +1,18 @@
 @import "bootstrap";
 @import "navigation";
+@import "home";
 
 html {
   font-size: 17px;
+  background-color: rgba(244,134,3,0.5);
+}
+
+body {
+  margin-top: 58px;
+  background-color: rgba(244,134,3,0.5);
+}
+
+.center {
+  text-align: center;
 }
 

@@ -1,0 +1,27 @@
+
+.carousel-img{
+  height : 70% !important;
+}
+
+.carousel {
+  background-color: white;
+  text-align: center;
+  height: 70% !important;
+  width : 100%;
+}
+
+@media (min-width: 1200px){
+  .carousel {
+    height : 700px !important;
+  }
+  .carousel-img {
+    height : 700px !important;
+  }
+}
+
+@media (max-width: 1200px){
+  .carousel-img {
+    width: 100%;
+  }
+}
+
