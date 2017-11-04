@@ -25,3 +25,23 @@
   }
 }
 
+@media (min-width: 750px){
+  .carousel-img-1 {
+    content:url("mobile-friendly");
+  }
+  .carousel-img-2 {
+    content:url("track-progress");
+  }
+}
+
+@media (max-width: 750px){
+  .carousel {
+    height: 1220px;
+  }
+  .carousel-img-1 {
+    content:url("mobile-friendly-MOBILE");
+  }
+  .carousel-img-2 {
+    content:url("track-progress-MOBILE");
+  }
+}
