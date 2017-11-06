@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h1 align="center">
+    My subjects
+  </h1>
+  <div class="row">
+    <% current_user.subjects.each do |subject| %>
+      <div class="card col-md-4 p-1">
+        <%= cl_image_tag("#{subject.name}_avatar.jpg", class: "card-img-top") %>
+        <h4 align="center"><%= subject.name %></h4>
+      </div>  
+    <% end %>
+  </div>
+  <%= "Jirre jissis" if @subject %>
+</div>

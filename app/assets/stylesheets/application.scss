@@ -40,8 +40,29 @@ body {
   background: #03a9f4;
 }
 
+.white {
+  color: white;
+}
+
 .card-orange {
   background-color: rgba(244,134,3,0.4);
+}
+
+.login-signup-form {
+  background-color: rgba(244,134,3,0.8);
+}
+
+.big-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+#about-us-heading {
+  margin-top: 25px;
+  font-weight: 300;
+  font-size: 4rem;
+  color: #03a9f4;
+  text-align: center;
 }
 
 @media (min-width: 1200px){

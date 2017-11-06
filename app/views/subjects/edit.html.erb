@@ -1,0 +1,13 @@
+<div class="container mt-5 col-md-4 offset-md-4">
+  <%= form_tag :url => url_for(:controller => 'subjects', :action => 'update') do |form| %>
+    <table>
+      <% Subject.all.each do |subject| %>
+        <tr>
+          <td><h5><%= subject.name %></h5></td>
+          <td><%= check_box_tag :"#{subject.code}", 1 %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= submit_tag "Save", method: :post, class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>

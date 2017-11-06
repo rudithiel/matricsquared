@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106114458) do
+ActiveRecord::Schema.define(version: 20171106181229) do
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "papers"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_subjects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_subjects", ["subject_id"], name: "index_user_subjects_on_subject_id"
+  add_index "user_subjects", ["user_id"], name: "index_user_subjects_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

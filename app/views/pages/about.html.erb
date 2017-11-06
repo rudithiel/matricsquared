@@ -1,0 +1,18 @@
+<div class="container">
+  <div>
+    <h1 id="about-us-heading">About us</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6 center p-5">
+      <%= cl_image_tag("rudi_avatar.jpg", :width => 200, :height => 200, 
+                               :crop => :fill, :gravity => :face, class: "border border-primary rounded-circle") %>
+      
+    </div>
+    <div class="col-md-6 center p-5">
+      <%= cl_image_tag("philip_avatar.jpg", :width => 200, :height => 200, 
+                               :crop => :fill, :gravity => :face, class: "border border-primary rounded-circle") %>  
+    </div>
+    
+  </div>
+</div>

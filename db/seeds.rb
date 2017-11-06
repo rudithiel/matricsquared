@@ -3,5 +3,18 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+afr = Subject.create(name: "Afrikaans Huistaal", papers: 3, code: "AFHT");
+afr.save
+
+it = Subject.create(name: "Information Technology", papers: 2, code: "INFT");
+it.save
+
+bio = Subject.create(name: "Life Sciences", papers: 2, code: "LFSC")
+bio.save
+
+maths = Subject.create(name: "Maths", papers: 2, code: "MATH");
+maths.save;
+
+science = Subject.create(name: "Physical Sciences", papers: 2, code: "PHSC");
+science.save
+
