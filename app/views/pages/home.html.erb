@@ -1,4 +1,9 @@
 
-<%= render 'layouts/carousel' %>
-
-<img id="how-it-works">
+<% if user_signed_in? %>
+  <div class="center">
+    <h1> welcome fucker</h1>
+  </div>
+<% else %>
+  <%= render 'layouts/carousel' %>
+  <img id="how-it-works">
+<% end %>

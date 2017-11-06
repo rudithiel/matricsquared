@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  padding-top: 30px;
+  padding-top: 50px;
   background-color: white;
 }
 
@@ -38,6 +38,10 @@ body {
 
 .blue {
   background: #03a9f4;
+}
+
+.card-orange {
+  background-color: rgba(244,134,3,0.4);
 }
 
 @media (min-width: 1200px){
