@@ -1,9 +1,24 @@
 class SubjectsController < ApplicationController
   
   def edit 
-    @subjects = {"AFHT" => 0}
-    render 'edit'
+    @subjects = Subject.all
   end  
+  
+  def remove
+    @subject = Subject.where(code: params[:code])
+    current_user.subjects.delete(@subject)
+    respond_to do |format|
+      format.html { render 'subjects/edit' }
+    end
+  end
+  
+  def add 
+     @subject = Subject.where(code: params[:code]) 
+     current_user.subjects.push(@subject)
+      respond_to do |format|
+        format.html { render 'subjects/edit' }
+      end
+  end
   
   def update
     

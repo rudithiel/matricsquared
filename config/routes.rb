@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/' => 'pages#home'
   get 'edit_subjects', to: 'subjects#edit', as: 'edit_subjects'
-  post 'edit_subjects', to: "subjects#update", as: "update_subjects"
+  post 'subject/:code/add', to: 'subjects#add', as: 'add_subject'
+  post 'subject/:code/remove', to: 'subjects#remove', as: 'remove_subject'
 end
