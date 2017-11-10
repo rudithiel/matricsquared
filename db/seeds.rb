@@ -24,4 +24,6 @@ Question.create(question: "According to Newton's Second Law of Motion, the accel
 object is …", paper: "Feb-March 2017", option1: "independent of its mass. ", 
 option2: "always equal to its mass.", 
 option3: "directly proportional to its mass.", option4: "inversely proportional to its mass.", 
-answer: "C", subject_id: Subject.where(code: "PHSC").first.id, category: "Newton's Laws")
+answer: "C", subject_id: Subject.where(code: "PHSC").first.id, category: "Newton")
+
+User.create(email: "rudi@rapstudios.co.za", admin: "true", password: "Rudi1Karl2")
