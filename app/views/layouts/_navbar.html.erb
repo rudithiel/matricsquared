@@ -1,7 +1,8 @@
 <nav class="navbar navbar-inverse bg-inverse navbar-expand-md fixed-top" id="navbar">
   <div class="container">
-    <%= link_to "Past Papers", root_path, class: "navbar-brand" %>
-    
+    <%= link_to raw root_path do %>
+      <p class="navbar-brand">Matric&sup2;</p>
+    <% end %>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navToggler" aria-controls="navToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,6 +13,14 @@
         <li>
           <%= link_to "About", about_path, class: "nav-item" %>
         </li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li>
+            <%= link_to "Users", users_path, class: "nav-item" %>
+          </li> 
+          <li>
+            <%= link_to "New ", users_path, class: "nav-item" %>
+          </li> 
+        <% end %>
       </ul>
       
       <ul class="navbar-nav ml-auto center">

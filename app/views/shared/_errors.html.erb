@@ -1,0 +1,13 @@
+<% if object.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h4 class="alert-heading">Whoops!</h4>
+    <hr>
+    <ul>
+      <% object.errors.full_messages.each do |error| %>
+        <li>
+          <%= error %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

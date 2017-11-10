@@ -6,7 +6,7 @@
 }
 
 .navbar-brand {
-  font-size: 2rem;
+  font-size: 1.9rem;
   color: white;
   &:hover {
     color: white;
@@ -14,9 +14,9 @@
 }
 
 .nav-item {
-  font-size: 1.6rem !important;
+  font-size: 1.6rem;
   color: white;
-  margin: 5px;
+  padding: 4px;
   &:hover {
     color: white;
     text-decoration: none;
@@ -34,8 +34,6 @@
 
 @media (max-width: 768px){
     .nav-item {
-      margin-top: 10px;
-      margin-bottom: 10px;
     }
     .navbar-nav {
       text-align: center;

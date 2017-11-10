@@ -1,0 +1,25 @@
+<div class="container mt-4 border center">
+  <h1 align="center">
+    <%= @subject.name %>
+  </h1>
+  <div class="row">
+    <div class="col-md">
+      <h3>Chapters</h3>
+      <% @categories = @subject.questions.pluck(:category).uniq %>
+      <% @categories.each do |category| %>
+        <div class="container-fluid center border rounded blue p-4">
+            <h2><%= category %></h2>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md">
+      <h3>Papers</h3>
+      <% @papers = @subject.questions.pluck(:paper).uniq %>
+      <% @papers.each do |paper| %>
+        <div class="container-fluid center border rounded blue p-4">
+            <h4><%= paper %></h4>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

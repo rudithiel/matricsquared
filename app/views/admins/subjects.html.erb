@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <% if @subjects %>
+    <h1 align="center">All Subjects</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Code</td>
+          <td>Students</td>
+          <td>Categories</td>
+          <td>Questions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subjects.each do |subject| %>
+          <tr>
+            <td><%= subject.name %></td>
+            <td><%= subject.code %></td>
+            <td><%= subject.users.count %></td>
+            <td>
+              <%= subject.categories.count %>
+              <%= link_to "View", subject_categories_path(subject), class:"btn btn-warning" %>
+            </td>
+            <td>
+              <%= subject.questions.count %>
+              <%= link_to "View", subject_questions_path(subject), class: "btn btn-dark" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

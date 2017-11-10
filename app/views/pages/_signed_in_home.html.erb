@@ -4,9 +4,15 @@
   </h1>
   <div class="row">
     <% current_user.subjects.each do |subject| %>
-      <div class="card col-md-4 p-1">
-        <%= cl_image_tag("#{subject.name}_avatar.jpg", class: "card-img-top") %>
-        <h4 align="center"><%= subject.name %></h4>
+      <div class="col-lg p-3">
+        <div class="center">
+          <%= link_to cl_image_tag("#{subject.code}_avatar.jpg", 
+          class: "rounded-circle border border-secondary", :width => 120, :height => 120, :crop => :fill), show_subject_path(subject.code) %>
+        </div>
+        <div class="link">
+          <h4 align="center" class="mt-2"><%= link_to subject.name, show_subject_path(subject.code), class: "link" %></h4>  
+        </div>
+          
       </div>  
     <% end %>
   </div>

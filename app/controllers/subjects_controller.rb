@@ -1,5 +1,9 @@
 class SubjectsController < ApplicationController
   
+  def show
+    @subject = Subject.where(code: params[:code]).first
+  end  
+  
   def edit 
     @subjects = Subject.all
   end  
@@ -13,11 +17,11 @@ class SubjectsController < ApplicationController
   end
   
   def add 
-     @subject = Subject.where(code: params[:code]) 
-     current_user.subjects.push(@subject)
-      respond_to do |format|
-        format.html { render 'subjects/edit' }
-      end
+   @subject = Subject.where(code: params[:code]) 
+   current_user.subjects.push(@subject)
+    respond_to do |format|
+      format.html { render 'subjects/edit' }
+    end
   end
   
   def update

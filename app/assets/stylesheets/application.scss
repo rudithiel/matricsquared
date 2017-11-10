@@ -28,8 +28,9 @@ html {
 }
 
 body {
-  padding-top: 50px;
+  padding-top: 60px;
   background-color: white;
+  min-height: 400px;
 }
 
 .center {
@@ -44,8 +45,11 @@ body {
   color: white;
 }
 
-.card-orange {
-  background-color: rgba(244,134,3,0.4);
+.link {
+  color: black;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .login-signup-form {
@@ -91,3 +95,5 @@ body {
 
 @import "navigation";
 @import "home";
+@import "footer";
+@import "admins";

@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <% if @users %>
+    <h1 align="center">All Users</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <td>Name</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
