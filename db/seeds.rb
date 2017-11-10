@@ -14,16 +14,11 @@ it.save
 bio = Subject.create(name: "Life Sciences", papers: 2, code: "LFSC")
 bio.save
 
-maths = Subject.create(name: "Maths", papers: 2, code: "MATH");
+maths = Subject.create(name: "Mathematics", papers: 2, code: "MATH");
 maths.save;
 
 science = Subject.create(name: "Physical Sciences", papers: 2, code: "PHSC");
 science.save
 
-Question.create(question: "According to Newton's Second Law of Motion, the acceleration of an
-object is …", paper: "Feb-March 2017", option1: "independent of its mass. ", 
-option2: "always equal to its mass.", 
-option3: "directly proportional to its mass.", option4: "inversely proportional to its mass.", 
-answer: "C", subject_id: Subject.where(code: "PHSC").first.id, category: "Newton")
-
 User.create(email: "rudi@rapstudios.co.za", admin: "true", password: "Rudi1Karl2")
+User.create(email: "philip@rapstudios.co.za", admin: "true", password: "Awewert1")
