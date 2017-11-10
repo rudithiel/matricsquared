@@ -1,28 +1,28 @@
 <div class="login-signup-form col-md-4 offset-md-4 card" style="background-color: rgba(244,134,3,0.8)">
+  <div class="col-sm-8 offset-sm-2">  
+  <h1 class="my-4 white">Log in</h1>
   
-<h2 class="my-4 white">Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field mt-3">
-      <%= f.check_box :remember_me, type: "checkbox" %>
-      <%= f.label :remember_me %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: "form-control" %>
     </div>
-  <% end -%>
-
-  <div class="actions my-4">
-    <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
+  
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
+  
+    <% if devise_mapping.rememberable? -%>
+      <div class="form-group mt-3">
+        <%= f.check_box :remember_me, type: "checkbox" %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+  
+    <div class="actions my-4">
+      <%= f.submit "Log in", class: "btn btn-primary btn-lg" %>
+    </div>
+  <% end %>
   </div>
-<% end %>
-
 </div>

@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-md">
       <h3>Chapters</h3>
-      <% @categories = @subject.questions.pluck(:category).uniq %>
+      <% @categories = Category.find(@subject.questions.pluck(:category_id).uniq) %>
       <% @categories.each do |category| %>
         <div class="container-fluid center border rounded blue p-4">
-            <h2><%= category %></h2>
+            <h2><%= category.name %></h2>
         </div>
       <% end %>
     </div>

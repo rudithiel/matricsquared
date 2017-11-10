@@ -15,10 +15,7 @@
         </li>
         <% if user_signed_in? && current_user.admin? %>
           <li>
-            <%= link_to "Users", users_path, class: "nav-item" %>
-          </li> 
-          <li>
-            <%= link_to "New ", users_path, class: "nav-item" %>
+            <%= link_to "Admin Portal", admin_portal_path, class: "nav-item" %>
           </li> 
         <% end %>
       </ul>
@@ -50,3 +47,4 @@
     </div>
   </div>  
 </nav>
+s

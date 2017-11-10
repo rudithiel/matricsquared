@@ -12,7 +12,7 @@ ready = ->
             type: "GET"
             datatype: "json"
             error: (jqXHR, textStatus, errorThrown) ->
-                  alert "Your search result came up empty. Please try again, or refresh the page."
+                  console.log "Error getting categories"
             success: (data, textStatus, jqXHR) ->
                   showCategories(data)
     return

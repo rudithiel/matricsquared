@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'users', to: 'admins#users', as: 'users'
   
   #ADMIN ONLY ROUTES
+  get 'admin', to: 'admins#admin_portal', as: 'admin_portal'
+  
   get 'admin/new_question', to: 'admins#new_question', as: 'new_question'
   post 'admin/add_question', to: 'admins#add_question', as: 'add_question'
   get 'admin/new_subject', to: 'admins#new_subject', as: 'new_subject'
