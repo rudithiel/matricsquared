@@ -1,7 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$(document).ready ->
+ready = ->
   $('#subject-input').change ->
     console.log "Subject changed"
     $('#categories-list').html("")
@@ -28,3 +28,7 @@ showCategories = (categories) ->
         text: categories[i].name)
   else
     $('#categories-list').append "No categories yet"  
+    
+$(document).ready(ready)
+$(document).on('page:load', ready)
+$(document).on('turbolinks:load', ready)
