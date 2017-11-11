@@ -1,19 +1,21 @@
-<div class="container mt-4 center">
-  <%= image_tag(@subject.name + " Banner", :width => "100%", class: "rounded") %>
-  <div class="row">
-      <% @categories = @subject.categories %>
-      <% @categories.each do |category| %>
-        <div class="col-md-6 col-sm-6 col-xs-6 bg-dark text-white category-container p-4 my-2">
-          <div class="row">
-            <div class="col-sm-6 col-xs-6">
-              <%= image_tag(category.name, :width => "80%", class: "rounded-circle category-pic") %>
-            </div>
-            <div class="col-sm-6 col-xs-6 mt-2 p-2">
-              <h3 align="left"><%= category.name %> </h3> 
-              <%= link_to "Practice", '#', class: "btn btn-warning btn-md", style: "float: left" %>
+<div class="container-fluid bg-dark">
+  <div class="container mt-4 center">
+    <%= image_tag(@subject.name + " Banner", :width => "100%", class: "rounded") %>
+    <div class="row">
+        <% @categories = @subject.categories %>
+        <% @categories.each do |category| %>
+          <div class="col-md-4 col-sm-6  text-white category-container p-4 my-2">
+            <div class="row">
+              <div class="col-sm-6 col-6">
+                <%= image_tag(category.name, :width => "80%", class: "rounded-circle category-pic") %>
+              </div>
+              <div class="col-sm-6 col-6 p-2">
+                <h3 align="left"><%= category.name %> </h3> 
+                <%= link_to "Practice", '#', class: "btn btn-warning btn-lg", style: "float: left" %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+</div>
