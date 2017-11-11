@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get 'faq', to: 'pages#faq', as: 'faq'
   get 'users', to: 'admins#users', as: 'users'
   
+  get 'practice/category/:id', to: 'questions#category_practice', as: 'category_practice'
+  get 'practice/subject/:code', to: 'questions#subject_practice', as: 'subject_practice'
+  
+  get '/practice/next', to: 'questions#next_question', as: 'next_question'
+  
   #ADMIN ONLY ROUTES
   get 'admin', to: 'admins#admin_portal', as: 'admin_portal'
   

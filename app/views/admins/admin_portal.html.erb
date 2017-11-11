@@ -1,17 +1,17 @@
 <div class="container mt-4">
   <%= render 'shared/messages' %>
-  <h1 align="center">Admin portal</h1>
+  <h1 align="center">Admin Portal</h1>
   <div class="row">
     <div class="col-md">
-      <h3>Actions</h3>
+      <h2>Actions</h2>
       <%= link_to "New Subject", new_subject_path, class: "btn btn-danger btn-block" %>
       <%= link_to "New Category", new_category_path, class: "btn btn-warning btn-block" %>
       <%= link_to "New Question", new_question_path, class: "btn btn-primary btn-block" %>
     </div>
     <div class="col-md">
-      <h3>View</h3>  
+      <h2>View</h2>  
       <%= link_to "Users", users_path, class: "btn btn-success btn-block" %>
-      <%= link_to "Subjects", subjects_path, class: "btn btn-dark btn-block" %>
+      <%= link_to "Subjects", subjects_path, class: "btn btn-light btn-block" %>
     </div>
   </div>
 </div>
