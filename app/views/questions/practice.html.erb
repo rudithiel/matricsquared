@@ -19,17 +19,17 @@
         D. <%= @question.option4 %>
       </li>
     </ul>
-    <div class="btn-group btn-group-lg mt-3" data-toggle="buttons">
-      <label class="btn btn-outline-warning px-5">
-        <input type="radio" name="options" id="question-option-A" autocomplete="off" style="width: 20px" value="A">A
+    <div class="btn-group btn-group-lg mt-3" data-toggle="buttons" style="width: 100%">
+      <label class="btn col-4 btn-outline-warning">
+        <input type="radio" name="options" id="question-option-A" autocomplete="off" value="A">A
       </label>
-      <label class="btn btn-outline-warning px-5">
+      <label class="btn col-4 btn-outline-warning ">
         <input type="radio" name="options" id="question-option-B" autocomplete="off" value="B">B
       </label>
-      <label class="btn btn-outline-warning px-5">
+      <label class="btn col-4 btn-outline-warning ">
         <input type="radio" name="options" id="question-option-C" autocomplete="off" value="C">C
       </label>
-      <label class="btn btn-outline-warning px-5">
+      <label class="btn col-4 btn-outline-warning ">
         <input type="radio" name="options" id="question-option-D" autocomplete="off" value="D">D
       </label>
     </div>  
@@ -42,12 +42,14 @@
         <hr>
         <h4 id="question-result-feedback"></h4>
       </div>
-      <%= link_to "Next Question", next_question_path, class: "btn btn-success btn-lg" %>
+      <%= link_to "Next Question", next_question_path, class: "btn btn-success btn-block" %>
     </div>
   </div>
   <% else %>
+  <div class="center">
     <h3 align="center">You finished all the questions in this category!</h3>
-    <%= link_to "Back to subject page", show_subject_path(@subject.code), class: "btn btn-success btn-lg", align: "center" %>
+    <%= link_to "Back to subject page", show_subject_path(@subject.code), class: "btn btn-success btn-lg mt-4" %>
+  </div>
   <% end %>
 </div>
 
