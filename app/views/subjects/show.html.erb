@@ -1,25 +1,19 @@
-<div class="container mt-4 border center">
-  <h1 align="center">
-    <%= @subject.name %>
-  </h1>
+<div class="container mt-4 center">
+  <%= image_tag(@subject.name + " Banner", :width => "100%", class: "rounded") %>
   <div class="row">
-    <div class="col-md">
-      <h3>Chapters</h3>
-      <% @categories = Category.find(@subject.questions.pluck(:category_id).uniq) %>
+      <% @categories = @subject.categories %>
       <% @categories.each do |category| %>
-        <div class="container-fluid center border rounded blue p-4">
-            <h2><%= category.name %></h2>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-md">
-      <h3>Papers</h3>
-      <% @papers = @subject.questions.pluck(:paper).uniq %>
-      <% @papers.each do |paper| %>
-        <div class="container-fluid center border rounded blue p-4">
-            <h4><%= paper %></h4>
+        <div class="col-md-6 col-sm-6 col-xs-6 bg-dark text-white category-container p-4 my-2">
+          <div class="row">
+            <div class="col-sm-6 col-xs-6">
+              <%= image_tag(category.name, :width => "80%", class: "rounded-circle category-pic") %>
+            </div>
+            <div class="col-sm-6 col-xs-6 mt-2 p-2">
+              <h3 align="left"><%= category.name %> </h3> 
+              <%= link_to "Practice", '#', class: "btn btn-warning btn-md", style: "float: left" %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
-</div>

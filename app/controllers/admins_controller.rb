@@ -19,7 +19,7 @@ class AdminsController < ApplicationController
   def add_category
     @category = Category.new(category_params)
     if @category.save
-      redirect_to root_path
+      redirect_to admin_portal_path
       flash[:success] = "Category #{@category.name} created for #{Subject.find(@category.subject_id).name}"
     else
       render :new_category

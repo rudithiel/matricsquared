@@ -3,11 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
   $('#subject-input').change ->
-    console.log "Subject changed"
     $('#categories-list').html("")
     $('#category-input').html("")
     subject_name = $('#subject-input').val()
-    console.log "Get categories for " + subject_name
     $.ajax "/admin/getcategories/" + subject_name,
             type: "GET"
             datatype: "json"
