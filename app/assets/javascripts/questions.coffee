@@ -2,14 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $('#diagram-input').hide()
-  $('#hasdiagram-input-checkbox').click ->
-    if $('#hasdiagram-input-checkbox').prop('checked')
-      console.log "show"
-      $('#diagram-input').show()
-    else
-      console.log "hide"
-      $('#diagram-input').hide()
   
   $('#question-answer-submit').click ->
     questionAnswer = $('#question-answer').html()

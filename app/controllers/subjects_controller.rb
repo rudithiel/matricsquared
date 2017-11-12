@@ -50,7 +50,7 @@ class SubjectsController < ApplicationController
   
   private
     def subject_params
-      params.require(:subject).permit(:name, :code, :papers)
+      params.require(:subject).permit(:name, :code, :papers, :banner, :avatar)
     end
     
     def authorized?
