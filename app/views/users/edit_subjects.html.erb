@@ -1,0 +1,19 @@
+<div class="container mt-5">
+      <h2 align="center">All subjects</h2>
+        <table align="center" class="table text-dark bg-light">
+          <% Subject.all.each do |subject| %>
+              <% if current_user.subjects.include?(subject) %>
+                <tr class="table-success">
+              <% else %>
+                <tr class="table-active">
+              <% end %>
+                <td><h5><%= subject.name %></h5></td>
+                <% if current_user.subjects.include?(subject) %>
+                  <td><%= link_to "Remove", remove_subject_path(subject.code), method: :post, class: "btn btn-md btn-danger btn-block"  %></td>
+                <% else %>
+                  <td><%= link_to "Add", add_subject_path(subject.code), method: :post, class: "btn btn-md btn-info btn-block"  %></td>
+                <% end %>
+              </tr>
+            <% end %>
+        </table> 
+</div>

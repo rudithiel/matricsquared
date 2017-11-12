@@ -2,9 +2,46 @@ class QuestionsController < ApplicationController
   
   before_filter :set_category_questions, only: [:category_practice]
   
+  def new
+    @question = Question.new
+    render :new
+  end
+  
+  def create
+    @question = Question.new(question_params)
+    if @question.save
+      flash[:success] = "New question added to the database"
+      redirect_to admin_portal_path
+    else
+      render :new
+    end
+  end
+  
+  def edit
+    @question = Question.find(params[:id])
+    render :edit
+  end
+  
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      flash[:success] = "Successfully updated question"
+      redirect_to admin_portal_path
+    else
+      render :edit
+    end
+  end
+  
   def category_practice
     @question = @@questions.find(@@question_ids[0])
     render :practice
+  end
+  
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    flash[:success] = "Deleted question"
+    redirect_to admin_portal_path
   end
   
   def next_question
@@ -34,4 +71,8 @@ class QuestionsController < ApplicationController
       @@question_ids.shuffle!
     end
   
+    def question_params
+      params.require(:question).permit(:question, :option1, :option2, 
+      :option3, :option4, :answer, :category_id, :subject_id)
+    end
 end

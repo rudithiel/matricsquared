@@ -1,19 +1,21 @@
-<div class="container mt-5">
-      <h2 align="center">All subjects</h2>
-        <table align="center" class="table">
-          <% Subject.all.each do |subject| %>
-              <% if current_user.subjects.include?(subject) %>
-                <tr class="table-success">
-              <% else %>
-                <tr class="table-active">
-              <% end %>
-                <td><h5><%= subject.name %></h5></td>
-                <% if current_user.subjects.include?(subject) %>
-                  <td><%= link_to "Remove", remove_subject_path(subject.code), method: :post, class: "btn btn-md btn-danger btn-block"  %></td>
-                <% else %>
-                  <td><%= link_to "Add", add_subject_path(subject.code), method: :post, class: "btn btn-md btn-info btn-block"  %></td>
-                <% end %>
-              </tr>
-            <% end %>
-        </table> 
+<div class="container mt-4">
+  <h1 align="center">Update Subject</h1>
+  <div class="col-md-4 offset-md-4">
+    <%= render 'shared/errors', object: @subject %>
+    <%= form_for @subject, :url => { :controller => 'subjects', :action => 'update'}, method: :post do |f| %>
+      <div class="form-group">
+        <label for="subject-name-input">Subject name</label>
+        <%= f.text_field :name, class: "form-control", id: "subject-name-input", placeholder: "eg. Mathematics" %>
+      </div>
+      <div class="form-group">
+        <label for="question-category">Subject Code</label>
+        <%= f.text_field :code, class: "form-control", id: "subject-code-input", placeholder: "eg. MATH" %>  
+      </div>
+      <div class="form-group">
+        <label for="question-category">Papers</label>
+        <%= f.number_field :papers, class: "form-control", id: "subject-code-input", placeholder: "eg. 2" %>
+      </div>
+      <%= f.submit "Submit", class:"btn btn-success btn-block" %>
+    <% end %>
+  </div>
 </div>

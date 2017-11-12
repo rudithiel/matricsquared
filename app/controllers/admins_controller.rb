@@ -3,64 +3,14 @@ class AdminsController < ApplicationController
   
   def users
     @users = User.all
-    respond_to do |format|
-      format.html { render 'users' }
-    end
+    render :users
   end  
   
   def home
   end
   
-  def new_category
-    @category = Category.new
-    render :new_category
-  end
-  
-  def add_category
-    @category = Category.new(category_params)
-    if @category.save
-      redirect_to admin_portal_path
-      flash[:success] = "Category #{@category.name} created for #{Subject.find(@category.subject_id).name}"
-    else
-      render :new_category
-    end
-  end
-  
-  def new_question
-    @question = Question.new
-    respond_to do |format|
-      format.html { render 'new_question' }
-    end
-  end
-  
-  def add_question
-    @question = Question.new(question_params)
-    if @question.save
-      flash[:success] = "New question added to the database"
-      redirect_to root_path
-    else
-      render :new_question
-    end
-  end
-  
   def subjects
     @subjects = Subject.all
-  end
-    
-  def new_subject
-    @subject = Subject.new
-    respond_to do |format|
-      format.html { render 'new_subject' }
-    end
-  end
-  
-  def add_subject
-    @subject = Subject.new(subject_params)
-    if @subject.save
-      redirect_to root_path
-    else
-      render :new_subject
-    end
   end
   
   def getcategories
@@ -85,12 +35,7 @@ class AdminsController < ApplicationController
     @questions = @category.questions
   end
   
-  def destroy_category
-    @category = Category.find(params[:id])
-    @subject = Subject.find(@category.subject_id)
-    @category.destroy
-    redirect_to subject_categories_path(@subject)
-  end
+  
   
   def destroy_category_question
     @question = Question.find(params[:id])
@@ -114,16 +59,10 @@ class AdminsController < ApplicationController
       end
     end
     
-    def subject_params
-      params.require(:subject).permit(:name, :code, :papers)
-    end
+   
     
-    def category_params
-      params.require(:category).permit(:name, :subject_id)
-    end
+
     
-    def question_params
-      params.require(:question).permit(:question, :option1, :option2, 
-      :option3, :option4, :answer, :category_id, :subject_id)
-    end
+    
+    
 end

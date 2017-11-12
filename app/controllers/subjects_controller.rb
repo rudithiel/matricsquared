@@ -1,80 +1,62 @@
 class SubjectsController < ApplicationController
+  before_filter :authorized?
   
   def show
     @subject = Subject.where(code: params[:code]).first
   end  
   
-  def edit 
+  def admin_show
     @subjects = Subject.all
-  end  
+  end
   
-  def remove
-    @subject = Subject.where(code: params[:code])
-    current_user.subjects.delete(@subject)
-    respond_to do |format|
-      format.html { render 'subjects/edit' }
+  def new
+    @subject = Subject.new
+    render :new
+  end
+  
+  def create
+    @subject = Subject.new(subject_params)
+    if @subject.save
+      redirect_to admin_portal_path
+    else
+      render :new
     end
   end
   
-  def add 
-   @subject = Subject.where(code: params[:code]) 
-   current_user.subjects.push(@subject)
-    respond_to do |format|
-      format.html { render 'subjects/edit' }
-    end
+  def edit
+    @subject = Subject.find(params[:id])
+    render :edit
   end
   
   def update
-    
-    subject = Subject.where(code: "AFHT")
-    if params.has_key?(:AFHT) && current_user.subjects.exclude?(subject)
-      subject = Subject.where(code: "AFHT")
-      current_user.subjects.push(subject)
+    @subject = Subject.find(params[:id])
+    if @subject.update(subject_params)
+      redirect_to admin_portal_path
     else
-      subject = Subject.where(code: "AFHT")
-      current_user.subjects.delete(subject)
-    end
-    
-    subject = Subject.where(code: "INFT")
-    if params.has_key?(:INFT) && current_user.subjects.exclude?(subject)
-      subject = Subject.where(code: "INFT")
-      current_user.subjects.push(subject)
-    else
-      subject = Subject.where(code: "INFT")
-      current_user.subjects.delete(subject)
-    end
-    
-    subject = Subject.where(code: "LFSC")
-    if params.has_key?(:LFSC) && current_user.subjects.exclude?(subject)
-      subject = Subject.where(code: "LFSC")
-      current_user.subjects.push(subject)
-    else
-      subject = Subject.where(code: "LFSC")
-      current_user.subjects.delete(subject)
-    end
-    
-    subject = Subject.where(code: "MATH")
-    if params.has_key?(:MATH) && current_user.subjects.exclude?(subject)
-      subject = Subject.where(code: "MATH")
-      current_user.subjects.push(subject)
-    else
-      subject = Subject.where(code: "MATH")
-      current_user.subjects.delete(subject)
-    end
-    
-    subject = Subject.where(code: "PHSC")
-    if params.has_key?(:PHSC) && current_user.subjects.exclude?(subject)
-      subject = Subject.where(code: "PHSC")
-      current_user.subjects.push(subject)
-    else
-      subject = Subject.where(code: "PHSC")
-      current_user.subjects.delete(subject)
-    end
-    
-    
-    respond_to do |format|
-      format.html { redirect_to root_path }
+      render :edit
     end
   end
+  
+  def destroy
+    @subject = Subject.find(params[:id])
+    if @subject.destroy
+      flash[:success] = "Successfully deleted the subject #{@subject.name}"
+      redirect_to admin_portal_path
+    else
+      flash[:danger] = "Couldn't delete the requested subject"
+      redirect_to admin_portal_path
+    end
+  end
+  
+  private
+    def subject_params
+      params.require(:subject).permit(:name, :code, :papers)
+    end
+    
+    def authorized?
+      unless user_signed_in? && current_user.admin?
+        redirect_to root_path
+      end
+    end
   
 end

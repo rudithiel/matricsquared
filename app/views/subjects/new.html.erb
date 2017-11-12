@@ -1,9 +1,8 @@
 <div class="container mt-4">
   <h1 align="center">Add a new subject</h1>
   <div class="col-md-4 offset-md-4">
-    <% @subject = Subject.new %>
     <%= render 'shared/errors', object: @subject %>
-    <%= form_for @subject, :url => { :controller => 'admins', :action => 'add_subject'}, method: :post do |f| %>
+    <%= form_for @subject, :url => { :controller => 'subjects', :action => 'create'}, method: :post do |f| %>
       <div class="form-group">
         <label for="subject-name-input">Subject name</label>
         <%= f.text_field :name, class: "form-control", id: "subject-name-input", placeholder: "eg. Mathematics" %>

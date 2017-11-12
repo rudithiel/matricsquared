@@ -2,21 +2,21 @@
   <h1 align="center">All categories for <%= @subject.name %></h1>
   <div class="row">
     <% @categories.each do |category| %>
-      <div class="card bg-dark text-white col-md-4 p-3">
-        <div class="card-header">
-          <h2>
-            <%= category.name %>
-          </h2>
-        </div>
-        <div class="card-body">
-          <h5>
-            <%= pluralize(category.questions.count, "Question") %>
-          </h5>
-        </div>
-          <%= link_to "View Questions", category_questions_path(category), class: "btn btn-primary btn-block"%>
-          <%= link_to "Remove category", destroy_category_path(category), class: "btn btn-danger btn-block", 
-          method: :post, data: {confirm: "Are you sure you want to delete the category #{category.name}?"}%>
-      </div>  
+      <div class="col-md-4 col-sm-6  text-white category-container p-4 my-2">
+            <div class="row">
+              <div class="col-sm-6 col-6">
+                <%= image_tag(@subject.name + "/" + category.name, :width => "80%", class: "rounded-circle mr-auto category-pic") %>
+              </div>
+              <div class="col-sm-6 col-6 p-2">
+                <h3 align="left"><%= category.name %> </h3> 
+                <%= link_to "Edit", edit_category_path(category), class: "btn btn-warning btn-lg", style: "float: left" %>
+                <%= link_to "Delete", destroy_category_path(category), 
+                class: "btn btn-danger btn-lg", style: "float: left", 
+                method: :post, data: {confirm: "Are you sure you want to delete the category #{category.name}?"} %>
+                <%= link_to "View Questions", category_questions_path(category), class: "btn btn-primary btn-lg", style: "float: left" %>
+              </div>
+            </div>
+          </div> 
     <% end %>
   </div>
 </div>

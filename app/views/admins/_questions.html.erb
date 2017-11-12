@@ -1,9 +1,10 @@
-<div class="container mt-4">
+<% renderer = Redcarpet::Render::HTML.new(render_options = {}) %>
+<% markdown = Redcarpet::Markdown.new(renderer, superscript: true, subscript: true, fraction: true) %>
   <div class="row">
     <% @questions.each do |question| %>
       <div class="card col-lg-4 bg-info text-white p-2 col-md">
         <div class="card-header">
-          <h3><%= question.question %></h3>
+          <h3><%= raw(markdown.render(question.question)) %></h3>
         </div>
         <div class="card-body">
           <h5>Option A:</h5>
@@ -14,11 +15,12 @@
           <p><%= question.option3 %></p>
           <h5>Option D:</h5>
           <p><%= question.option4 %></p>
-          
+          <h5>Answer:</h5>
+          <p><%= question.answer %></p>
         </div>
-        <%= link_to "Delete question", destroy_category_question_path(question), 
+        <%= link_to "Edit", edit_question_path(question), class: "btn btn-warning btn-block" %>
+        <%= link_to "Delete", destroy_category_question_path(question), 
         class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to delete this question?" } %>
       </div>
     <% end %>
   </div>
-</div>

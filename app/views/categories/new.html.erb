@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h1 align="center">Add a new category</h1>
+  <div class="col-md-4 offset-md-4">
+    <%= render 'shared/errors', object: @category %>
+    <%= form_for @category, :url => { :controller => 'categories', :action => 'create'}, method: :post do |f| %>
+      <div class="form-group">
+        <label for="subject-input">Subject</label>
+        <%= f.select(:subject_id, Subject.all.map { |p| [p.name, p.id] }, {:default => "Subject"}, 
+        { :class => 'custom-select input-xl', :style => 'width: 100%', id: 'subject-input' }) %>
+      </div>
+      <div class="form-group">
+        <label for="question-subject">Categories already in this subject</label>
+        <ul id="categories-list">
+          <% Subject.first.categories.each do |c| %>
+            <li><%= c.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="subject-name-input">Category name</label>
+        <%= f.text_field :name, class: "form-control", id: "subject-name-input" %>
+      </div>
+      <% Subject.all.each do |subj| %>
+        <%= hidden_field_tag subj.name, "#{subj.name}", {:id => "#{subj.name}", "data-categories" => subj.categories} %>
+      <% end %>
+      <%= f.submit "Submit", class:"btn btn-success btn-block" %>
+    <% end %>
+  </div>
+</div>

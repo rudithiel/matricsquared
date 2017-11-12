@@ -1,24 +1,27 @@
-<div class="container mt-4">
+
+<% renderer = Redcarpet::Render::HTML.new(render_options = {}) %>
+<% markdown = Redcarpet::Markdown.new(renderer, superscript: true, subscript: true, fraction: true) %>
+<div class="container mt-4" id="question-conatiner">
   <% if @question %>
   <p id="question-answer" hidden><%= @question.answer %></p>
   <div class="col-md-8 offset-md-2">
     <h3>
-      <%= @question.question %>
+      <%= raw(markdown.render(@question.question)) %>
     </h3>
-    <ul style="list-style-type: none; font-size: 1.3rem" class="p-0 m-0">
-      <li>
-        A. <%= @question.option1 %>
-      </li>
-      <li>
-        B. <%= @question.option2 %>
-      </li>
-      <li>
-        C. <%= @question.option3 %>
-      </li>
-      <li>
-        D. <%= @question.option4 %>
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col-md-3">
+        A. <%= raw(markdown.render(@question.option1)) %>
+      </div>
+      <div class="col-md-3"> 
+        B. <%= raw(markdown.render(@question.option2)) %>
+      </div>
+      <div class="col-md-3">
+        C. <%= raw(markdown.render(@question.option3)) %>
+      </div>
+      <div class="col-md-3">
+        D. <%= raw(markdown.render(@question.option4)) %>
+      </div>
+    </div>
     <div class="btn-group btn-group-lg mt-3" data-toggle="buttons" style="width: 100%">
       <label class="btn col-4 btn-outline-warning">
         <input type="radio" name="options" id="question-option-A" autocomplete="off" value="A">A

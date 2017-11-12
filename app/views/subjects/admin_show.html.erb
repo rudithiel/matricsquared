@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <% if @subjects %>
+    <h1 align="center">All Subjects</h1>
+    <table class="table table-bordered table-striped" style="font-weight: bold; font-size: 1.3rem; width: 100%">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Categories</td>
+          <td>Questions</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subjects.each do |subject| %>
+          <tr>
+            <td><%= subject.name %></td>
+            <td>
+              <%= link_to subject_categories_path(subject) do %>
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                  View <span class="badge badge-light"><%= subject.categories.count %></span>
+                </button>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to subject_questions_path(subject) do %>
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                  View <span class="badge badge-light"><%= subject.questions.count %></span>
+                </button>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_subject_path(subject), class: "btn btn-warning btn-block" %>
+              <%= link_to "Delete", destroy_subject_path(subject), class: "btn btn-danger btn-block", 
+              method: :post, data: {confirm: "Are you sure you want to delete the subject #{subject.name}"} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

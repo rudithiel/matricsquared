@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
 gem 'cloudinary'
+
+gem 'redcarpet'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
