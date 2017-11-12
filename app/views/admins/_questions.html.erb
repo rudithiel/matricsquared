@@ -11,13 +11,13 @@
         </div>
         <div class="card-body">
           <h5>Option A:</h5>
-          <p><%= question.option1 %></p>
+          <p><%= raw(markdown.render(question.option1)) %></p>
           <h5>Option B:</h5>
-          <p><%= question.option2 %></p>
+          <p><%= raw(markdown.render(question.option2)) %></p>
           <h5>Option C:</h5>
-          <p><%= question.option3 %></p>
+          <p><%= raw(markdown.render(question.option3)) %></p>
           <h5>Option D:</h5>
-          <p><%= question.option4 %></p>
+          <p><%= raw(markdown.render(question.option4)) %></p>
           <h5>Answer:</h5>
           <p><%= question.answer %></p>
         </div>
