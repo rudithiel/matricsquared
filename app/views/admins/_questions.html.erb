@@ -6,6 +6,9 @@
         <div class="card-header">
           <h3><%= raw(markdown.render(question.question)) %></h3>
         </div>
+        <div>
+          <%= image_tag(question.diagram.url, :width => "100%") if question.diagram.file? %>
+        </div>
         <div class="card-body">
           <h5>Option A:</h5>
           <p><%= question.option1 %></p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109184637) do
+ActiveRecord::Schema.define(version: 20171112161027) do
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20171109184637) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "answer"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "subject_id"
     t.string   "question"
     t.string   "paper"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20171109184637) do
     t.string   "option3"
     t.string   "option4"
     t.integer  "category_id"
+    t.string   "diagram_file_name"
+    t.string   "diagram_content_type"
+    t.integer  "diagram_file_size"
+    t.datetime "diagram_updated_at"
   end
 
   create_table "subjects", force: :cascade do |t|

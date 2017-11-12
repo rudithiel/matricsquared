@@ -29,6 +29,8 @@ gem 'devise'
 gem 'cloudinary'
 
 gem 'redcarpet'
+
+gem "paperclip"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
