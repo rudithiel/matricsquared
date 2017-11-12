@@ -2,8 +2,6 @@ class Question < ActiveRecord::Base
   belongs_to :subject
   belongs_to :category
   attr_accessor :subject_name
-  attr_accessor :diagram_file_name
-  attr_accessor :diagram_content_type
   has_attached_file :diagram
   validates_attachment_content_type :diagram, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   
