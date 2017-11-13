@@ -1,7 +1,12 @@
 class Category < ActiveRecord::Base
+  paperclip_opts = {
+  :styles => { :medium => '150x200>' },
+  :convert_options => { :all => '-quality 92' },
+  :processor       => [ :cropper ]
+  }
   
   unless Rails.env.development?
-    paperclip_opts = { :storage        => :s3,
+    paperclip_opts = { :storage => :s3,
                           :url => ":s3_domain_url",
                           :path => ':attachment/:id/:style.:extension',
                           :s3_region => ENV['AWS_REGION'], 
