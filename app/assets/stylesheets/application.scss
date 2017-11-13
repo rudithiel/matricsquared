@@ -33,6 +33,12 @@ body {
   min-height: 400px;
 }
 
+.text-white {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .center {
   text-align: center;
 }

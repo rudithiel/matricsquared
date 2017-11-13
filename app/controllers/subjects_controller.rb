@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  before_filter :authorized?, :only => [:edit, :update, :admin_show]
   
   def show
     @subject = Subject.where(code: params[:code]).first
