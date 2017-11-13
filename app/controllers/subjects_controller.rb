@@ -3,6 +3,8 @@ class SubjectsController < ApplicationController
   
   def show
     @subject = Subject.where(code: params[:code]).first
+    @paper1_categories = @subject.categories.where(:paper => 1)
+    @paper2_categories = @subject.categories.where(:paper => 2) 
   end  
   
   def admin_show

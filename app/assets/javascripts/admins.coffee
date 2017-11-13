@@ -2,7 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $('#subject-input').change ->
+  $('#subject-input').change (e) ->
+    e.preventDefault()
+    e.stopImmediatePropagation()
     $('#categories-list').html("")
     $('#category-input').html("")
     subject_name = $('#subject-input').val()
