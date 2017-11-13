@@ -7,11 +7,11 @@ class Category < ActiveRecord::Base
   
   unless Rails.env.development?
     paperclip_opts.merge! :storage        => :s3,
+                          :s3_region => ENV['AWS_REGION'], 
                           :s3_credentials => {
                             :bucket => "matricsquared",
                             :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-                            :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
-                            :s3_region => ENV['AWS_REGION'] 
+                            :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
                           },
                           :bucket         => 'matricsquared'
   end
