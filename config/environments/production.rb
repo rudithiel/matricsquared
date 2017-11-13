@@ -3,7 +3,7 @@ Rails.application.configure do
   Paperclip::Attachment.default_options.merge!({
                           :storage => :s3,
                           :url => ":s3_domain_url",
-                          :path => ':attachment/:id/:style.:extension',
+                          :path => '/:name/:attachment/:id/:style.:extension',
                           :s3_region => ENV['AWS_REGION'], 
                           :s3_credentials => {
                             :bucket => ENV['AWS_BUCKET_NAME'],
