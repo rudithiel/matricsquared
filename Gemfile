@@ -30,7 +30,11 @@ gem 'cloudinary'
 
 gem 'redcarpet'
 
-gem "paperclip"
+gem 'paperclip'
+
+gem 'aws-sdk'
+
+gem 'figaro'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
