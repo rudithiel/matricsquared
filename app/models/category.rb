@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   unless Rails.env.development?
     paperclip_opts = { :storage        => :s3,
                           :url => ":s3_domain_url",
-                          :path => "/:class/avatars/",
+                          :path => ':attachment/:id/:style.:extension',
                           :s3_region => ENV['AWS_REGION'], 
                           :s3_credentials => {
                             :bucket => ENV['AWS_BUCKET_NAME'],
