@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.question-container {
-  p {
-    font-size: 2rem;
-  }
+#question-controls .btn {
+  font-size: 1.5rem;
+}
+
+#more-controls .btn {
+  margin: 2px 0px 2px 0px;
 }

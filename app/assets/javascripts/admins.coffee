@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
   $('#subject-input').change (e) ->
-    e.preventDefault()
     e.stopImmediatePropagation()
     $('#categories-list').html("")
     $('#category-input').html("")
