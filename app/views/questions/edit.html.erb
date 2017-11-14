@@ -11,13 +11,13 @@
         </div>
         <div class="form-group">
           <label for="question-category-input">Category</label>
-          <%= f.select(:category_id, Subject.first.categories.map { |p| [p.name, p.id] }, {}, 
+          <%= f.select(:category_id, Subject.find(@question.subject_id).categories.map { |p| [p.name, p.id] }, {}, 
           { :class => 'custom-select input-xl', :style => 'width: 100%', id: 'category-input' }) %>
         </div>
         <div class="form-group">
           <label class="custom-file">
             <%= f.file_field :diagram, class: "custom-file-input" %>
-            <span class="custom-file-control">Diagram (Browse)</span>
+            <span class="custom-file-control"><%= @question.diagram.file? ? @question.diagram_file_name : "Browse" %> </span>
           </label>  
         </div>
         <div class="form-group">
