@@ -2,6 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
+  $("#question-text").focus()  
+  textarea_id = "question-text"
+  
   $(document).keydown (e) ->
     e.stopImmediatePropagation()
     if e.which == 50 && e.ctrlKey
@@ -17,8 +20,6 @@ ready = ->
       e.preventDefault()
       controlInput("<sub>3</sub>")
   
-  $("#question-text").focus()  
-  textarea_id = 'question-text'
   
   $('.control-btn').click (e) ->
     e.stopImmediatePropagation()
@@ -44,16 +45,14 @@ ready = ->
     $('#' + textarea_id).focus()
   
   $('.question-textarea').click (e) ->
-    console.log "text area clicked"
+    textarea_id = $(this).attr('id')
     e.stopImmediatePropagation()
     $('#textarea-preview').html("")
     $('#textarea-preview').append($(this).val())
-    textarea_id = $(this).attr('id')
     return
     
   $('.question-textarea').bind 'input' , (e) ->
     e.stopImmediatePropagation()
-    console.log "text area edited"
     textarea_id = $(this).attr('id')
     $('#textarea-preview').html("")
     $('#textarea-preview').append($('#' + textarea_id).val()) 
