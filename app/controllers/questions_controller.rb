@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   
   before_filter :set_category_questions, only: [:category_practice]
+  before_filter :authorized?, only: [:new, :create, :edit, :update]
   
   def new
     @question = Question.new
@@ -74,5 +75,11 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:question, :option1, :option2, 
       :option3, :option4, :answer, :category_id, :subject_id, :diagram, :hasdiagram)
+    end
+    
+    def authorized?
+      unless user_signed_in? && current_user.admin?
+        redirect_to root_path
+      end
     end
 end
