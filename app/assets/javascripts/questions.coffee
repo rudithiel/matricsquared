@@ -3,27 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
   
-  textarea_id = ""
-  
-  $(document).keydown (e) ->
-    e.stopImmediatePropagation()
-    if e.which == 50 && e.ctrlKey
-      e.preventDefault()
-      controlInput("<sup>3</sup>")
-    if e.which == 51 && e.ctrlKey
-      e.preventDefault()
-      controlInput("<sup>3</sup>")
-    if e.which == 50 && e.altKey
-      e.preventDefault()
-      controlInput("<sub>2</sub>")
-    if e.which == 51 && e.altKey
-      e.preventDefault()
-      controlInput("<sub>3</sub>")
-  
+  textarea_id = "question-text"
   
   $('.control-btn').click (e) ->
     e.stopImmediatePropagation()
-    controlInput($(this).attr('id'))
+    controlInput($(this).attr('id'), textarea_id)
+    return
     
   $('#fraction-control-btn').click (e) ->
     e.stopImmediatePropagation()
@@ -34,12 +19,11 @@ ready = ->
     $('#textarea-preview').html("")
     $('#textarea-preview').append($('#' + textarea_id).val())
     $('#' + textarea_id).focus()
-
+    return
   
   $('.question-textarea').click (e) ->
     console.log "text area clicked: " + $(this).attr('id')
     textarea_id = $(this).attr('id')
-    console.log textarea_id
     e.stopImmediatePropagation()
     $('#textarea-preview').html("")
     $('#textarea-preview').append($(this).val())
@@ -47,22 +31,11 @@ ready = ->
     
   $('.question-textarea').bind 'input' , (e) ->
     e.stopImmediatePropagation()
-    console.log "text area edited"
     textarea_id = $(this).attr('id')
     $('#textarea-preview').html("")
     $('#textarea-preview').append($('#' + textarea_id).val()) 
     return
     
-  controlInput = (input) ->
-    cursorPosition = $('#' + textarea_id).prop('selectionStart')
-    currentText = $('#' + textarea_id).val()
-    newText = currentText.substr(0,cursorPosition) + input + currentText.substr(cursorPosition, currentText.length)
-    $('#' + textarea_id).val(newText)
-    $('#textarea-preview').html("")
-    $('#textarea-preview').append($('#' + textarea_id).val())
-    $('#' + textarea_id).focus()
-    
-  
   $('#question-answer-submit').click ->
     questionAnswer = $('#question-answer').html()
     userAnswer = $('input[type="radio"][name="options"]:checked').val()
@@ -89,3 +62,13 @@ ready = ->
 $(document).ready(ready)
 $(document).on('page:load', ready)
 $(document).on('turbolinks:load', ready)
+  
+controlInput = (input, textarea_id) ->
+  cursorPosition = $('#' + textarea_id).prop('selectionStart')
+  currentText = $('#' + textarea_id).val()
+  newText = currentText.substr(0,cursorPosition) + input + currentText.substr(cursorPosition, currentText.length)
+  $('#' + textarea_id).val(newText)
+  $('#textarea-preview').html("")
+  $('#textarea-preview').append($('#' + textarea_id).val())
+  $('#' + textarea_id).focus()
+  return

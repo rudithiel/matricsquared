@@ -5,6 +5,9 @@ class Question < ActiveRecord::Base
   has_attached_file :diagram
   validates_attachment_content_type :diagram, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   
+  has_attached_file :memo
+  validates_attachment_content_type :memo, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+  
   validates :question, presence: true
   validates :category_id, presence: true
   validates :subject_id, presence: true

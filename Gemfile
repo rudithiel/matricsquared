@@ -26,15 +26,15 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
 
-gem 'cloudinary'
-
-gem 'redcarpet'
-
 gem 'paperclip'
 
 gem 'aws-sdk'
 
 gem 'figaro'
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'will_paginate-bootstrap4'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

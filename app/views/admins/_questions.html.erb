@@ -1,29 +1,57 @@
-<% renderer = Redcarpet::Render::HTML.new(render_options = {}) %>
-<% markdown = Redcarpet::Markdown.new(renderer, superscript: true, subscript: true, fraction: true) %>
   <div class="row">
-    <% @questions.each do |question| %>
-      <div class="card col-lg-4 bg-info text-white p-2 col-md">
+    <div class="col">
+      <%= will_paginate @questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: "pagination" %>  
+    </div>
+    <% @questions.reverse_each do |question| %>
+      <div class="card col-12 bg-info text-white p-2 my-2">
         <div class="card-header">
-          <h3><%= raw(markdown.render(question.question)) %></h3>
+          <h5><%= raw(question.question) %></h5>
         </div>
-        <div>
-          <%= image_tag(question.diagram.url, :width => "100%") if question.diagram.file? %>
+        <div class="row">
+          <% if question.diagram.file? %>
+            <div class="col-sm-6">
+              <%= image_tag(question.diagram.url, :width => "100%") if question.diagram.file? %>
+            </div>
+          <% end %>
+          <% if question.memo.file? %>
+            <div class="col-sm-6">
+              <%= image_tag(question.memo.url, :maxwidth => "100%", :maxheight => "100%") if question.memo.file? %>
+            </div>
+          <% end %>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <h5>A: <%= raw(question.option1) %></h5>
+              </div>
+              <div class="col-sm-6">
+                <h5>B: <%= raw(question.option2) %></h5>    
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <h5>C: <%= raw(question.option3) %></h5>
+              </div>
+              <div class="col-sm-6">
+                <h5>D: <%= raw(question.option4) %></h5>    
+              </div>
+            </div>
+          <h5>Answer: <%= question.answer %></h5>
+          <% @category = Category.find(question.category_id) %>
+          <h5>Category: <%= @category.name %></h5>
+          </div>
         </div>
-        <div class="card-body">
-          <h5>Option A:</h5>
-          <p><%= raw(markdown.render(question.option1)) %></p>
-          <h5>Option B:</h5>
-          <p><%= raw(markdown.render(question.option2)) %></p>
-          <h5>Option C:</h5>
-          <p><%= raw(markdown.render(question.option3)) %></p>
-          <h5>Option D:</h5>
-          <p><%= raw(markdown.render(question.option4)) %></p>
-          <h5>Answer:</h5>
-          <p><%= question.answer %></p>
+        <div class="row">
+          <div class="col-6">
+            <%= link_to "Edit", edit_question_path(question), class: "btn btn-warning btn-block" %>  
+          </div>
+          <div class="col-6">
+            <%= link_to "Delete", destroy_category_question_path(question), 
+            class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to delete this question?" } %>  
+          </div>
         </div>
-        <%= link_to "Edit", edit_question_path(question), class: "btn btn-warning btn-block" %>
-        <%= link_to "Delete", destroy_category_question_path(question), 
-        class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to delete this question?" } %>
       </div>
     <% end %>
+    <div class="col">
+      <%= will_paginate @questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, class: "pagination" %>  
+    </div>
   </div>

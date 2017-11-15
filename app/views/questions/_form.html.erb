@@ -1,0 +1,121 @@
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <%= render 'shared/errors', object: @question %>
+      <%= form_for @question, :url => { :controller => 'questions', :action => action}, method: :post, multipart: true do |f| %>
+        <div class="form-group">
+          <label for="subject-input">Subject</label>
+          <%= f.select(:subject_id, Subject.all.map { |p| [p.name, p.id] }, {}, 
+          { :class => 'custom-select input-xl', :style => 'width: 100%', id: 'subject-input' }) %>
+        </div>
+        <% if @question.category_id? %>
+          <div class="form-group">
+            <label for="question-category-input">Category</label>
+            <%= f.select(:category_id, Subject.find(@question.subject_id).categories.map { |p| [p.name, p.id] }, {}, 
+            { :class => 'custom-select input-xl', :style => 'width: 100%', id: 'category-input' }) %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <label for="question-category-input">Category</label>
+            <%= f.select(:category_id, Subject.first.categories.map  { |p| [p.name, p.id] }, {}, 
+            { :class => 'custom-select input-xl', :style => 'width: 100%', id: 'category-input' }) %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <label class="custom-file">
+            <%= f.file_field :diagram, class: "custom-file-input" %>
+            <span class="custom-file-control"><%= @question.diagram.file? ? @question.diagram_file_name : "Diagram (Browse)" %></span>
+          </label>  
+        </div>
+        <div class="form-group">
+          <label class="custom-file">
+            <%= f.file_field :memo, class: "custom-file-input" %>
+            <span class="custom-file-control"><%= @question.memo.file? ? @question.memo_file_name : "Memo (Browse)" %></span>
+          </label>  
+        </div>
+        <div class="form-group">
+          <label for="question-text">Question</label>
+          <%= f.text_area :question, class: "form-control question-textarea", id: "question-text", rows: "7" %>  
+        </div>
+        <div class="form-group">
+          <label for="option1-text">Option A</label>
+          <%= f.text_area :option1, class: "form-control question-textarea", id: "option1-text" %>  
+        </div>
+        <div class="form-group">
+          <label for="option2-text">Option B</label>
+          <%= f.text_area :option2, class: "form-control question-textarea", id: "option2-text" %>  
+        </div>
+        <div class="form-group">
+          <label for="option3-text">Option C</label>
+          <%= f.text_area :option3, class: "form-control question-textarea", id: "option3-text" %>  
+        </div>
+        <div class="form-group">
+          <label for="option4-text">Option D</label>
+          <%= f.text_area :option4, class: "form-control question-textarea", id: "option4-text" %>  
+        </div>  
+        <div class="form-group">
+          <label for="answer-input">Answer</label>
+          <div class="btn-group" id="answer-input" data-toggle="buttons" style="width:100%">
+            <label class="btn col-4 btn-secondary">
+              <label for="option1">A</label>
+              <%= f.radio_button :answer, "A", id: "option1", type: "radio", autocomplete: "off", class: "answer-option" %>
+            </label>
+            <label class="btn col-4 btn-secondary">
+              <label for="option2">B</label>
+              <%= f.radio_button :answer, "B", id: "option2", type: "radio", autocomplete: "off", class: "answer-option" %>
+            </label>
+            <label class="btn col-4 btn-secondary">
+              <label for="option3">C</label>
+              <%= f.radio_button :answer, "C", id: "option3", type: "radio", autocomplete: "off", class: "answer-option" %>
+            </label>
+            <label class="btn col-4 btn-secondary">
+              <label for="option4">D</label>
+              <%= f.radio_button :answer, "D", id: "option4", type: "radio", autocomplete: "off", class: "answer-option" %>
+            </label>
+          </div>
+        </div>
+        <%= f.submit "Submit", class: "btn btn-success btn-block" %>
+      <% end %>
+    </div>
+    <div class="col-md-4 center" id="question-controls">
+      <h3>Controls</h3>
+      <div id="hidden-textarea" hidden></div>
+      <div class="btn-group" style="width: 100%">
+        <button id="<sup>" class="col-6 btn btn-primary control-btn">Superscript Open</button>
+        <button id="</sup>" class="col-6 btn btn-primary control-btn">Superscript Close</button>
+      </div>
+      <div class="btn-group my-2" style="width: 100%">
+        <button id="<sup>2</sup>" class="col-6 btn btn-primary control-btn">Superscript 2</button>
+        <button id="<sup>3</sup>" class="col-6 btn btn-primary control-btn">Superscript 3</button>
+      </div>
+      <button id="fraction-control-btn" class="btn btn-primary btn-block">Fraction</button>
+      <div class="btn-group my-2" style="width: 100%">
+        <button id="<sub>" class="col-6 btn btn-primary control-btn">Subscript Open</button>
+        <button id="</sub>" class="col-6 btn btn-primary control-btn">Subscript Close</button>
+      </div>
+      <div class="btn-group" style="width: 100%">
+        <button id="<sub>2</sub>" class="col-6 btn btn-primary control-btn">Subscript 2</button>
+        <button id="<sub>3</sub>" class="col-6 btn btn-primary control-btn">Subscript 3</button>
+      </div>
+      <button id="<br>" class="btn btn-primary btn-block control-btn">Line Break</button>
+      <button data-toggle="collapse" href="#more-controls" class="btn btn-warning btn-block">More Controls</button>
+      <div class="collapse mt-2" id="more-controls" align="left">
+        <button id="&rarr;" class="btn btn-primary control-btn">&rarr;</button>
+        <button id="&#8651;" class="btn btn-primary control-btn">&#8651;</button>
+        <button id="&#8451;" class="btn btn-primary control-btn">&#8451;</button>
+        <button id="&#8710;" class="btn btn-primary  control-btn">&#8710;</button>
+        <button id="&#8721;" class="btn btn-primary  control-btn">&#8721;</button>
+        <button id="&#8730;" class="btn btn-primary  control-btn">&#8730;</button>
+        <button id="&ang;" class="btn btn-primary  control-btn">&ang;</button>
+        <button id="&infin;" class="btn btn-primary  control-btn">&infin;</button>
+        <button id="&equiv;" class="btn btn-primary  control-btn">&equiv;</button>
+        <button id="&infin;" class="btn btn-primary  control-btn">&infin;</button>
+        <button id="&#8467;" class="btn btn-primary  control-btn">&#8467;</button>
+      </div>
+      <div class="carb bg-light text-dark mt-2 p-2">
+        <h3 align="center">Preview</h3>
+        <hr>
+        <h4 id="textarea-preview" class="text-left">
+        </h4>
+      </div>
+    </div> 
+  </div>

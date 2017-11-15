@@ -27,12 +27,12 @@ class AdminsController < ApplicationController
   
   def subject_questions
     @subject = Subject.find(params[:id])
-    @questions = @subject.questions
+    @questions = @subject.questions.paginate(:page => params[:page], :per_page => 6)
   end
   
   def category_questions
     @category = Category.find(params[:id])
-    @questions = @category.questions
+    @questions = @category.questions.paginate(:page => params[:page], :per_page => 6)
   end
   
   

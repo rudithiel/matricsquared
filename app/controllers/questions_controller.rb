@@ -74,7 +74,7 @@ class QuestionsController < ApplicationController
   
     def question_params
       params.require(:question).permit(:question, :option1, :option2, 
-      :option3, :option4, :answer, :category_id, :subject_id, :diagram, :hasdiagram)
+      :option3, :option4, :answer, :category_id, :subject_id, :diagram, :memo, :hasdiagram)
     end
     
     def authorized?
