@@ -3,6 +3,12 @@ class QuestionsController < ApplicationController
   before_filter :set_category_questions, only: [:category_practice]
   before_filter :authorized?, only: [:new, :create, :edit, :update]
   
+  def show
+    @question = Question.find(params[:id])
+    set_viewed_question(@question.id)
+    render :show
+  end
+  
   def new
     @question = Question.new
     render :new
@@ -33,8 +39,22 @@ class QuestionsController < ApplicationController
     end
   end
   
+  def star
+    set_viewed_question(params[:id])
+    if @viewed_question.starred?
+      @viewed_question.starred = false
+    else
+      @viewed_question.starred = true
+    end
+    @viewed_question.save
+    respond_to do |format|
+      format.html {render nothing: true}
+    end
+  end
+  
   def category_practice
     @question = @@questions.find(@@question_ids[0])
+    set_viewed_question(@question.id)
     render :practice
   end
   
@@ -50,6 +70,7 @@ class QuestionsController < ApplicationController
     @@question_ids.shift
     if @@question_ids.length != 0
       @question = @@questions.find(@@question_ids[0])
+      set_viewed_question(@question.id)
     end
     render :practice
   end
@@ -61,6 +82,13 @@ class QuestionsController < ApplicationController
   end
   
   private
+  
+    def set_viewed_question(question_id)
+      @viewed_question = ViewedQuestion.where(question_id: question_id, user_id: current_user.id).first
+      unless ViewedQuestion.exists?(question_id: question_id, user_id: current_user.id)
+        @viewed_question = ViewedQuestion.create(question_id: @question.id, user_id: current_user.id, starred: false, answered_correctly: false)
+      end  
+    end
     
     def set_category_questions
       @@category = Category.find(params[:id])

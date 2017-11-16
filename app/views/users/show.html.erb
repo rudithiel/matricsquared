@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <h1><%= @user.username.possessive %> profile</h1>
+  <div id="user-starred-questions" class="col col-md-4">
+    <h2 ><span class="fa fa-star fa-yellow mr-2"></span>Starred Questions</h2>
+    <% @starred_questions.each do |q| %>
+      <div class="m-1">
+        <% @question = Question.find(q.question_id) %>
+        <%= link_to truncate(@question.question, length: 100), show_question_path(@question), class: "text-white" %>
+      </div>
+    <% end %>
+    <%= will_paginate @starred_questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, align: "left" %>  
+  </div>
+</div>

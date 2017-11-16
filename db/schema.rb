@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115123253) do
+ActiveRecord::Schema.define(version: 20171116155359) do
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at",          null: false
@@ -86,9 +86,22 @@ ActiveRecord::Schema.define(version: 20171115123253) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.string   "province"
+    t.string   "school"
+    t.string   "username"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "viewed_questions", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "starred"
+    t.boolean  "answered_correctly"
+  end
 
 end

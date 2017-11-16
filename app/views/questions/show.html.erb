@@ -1,5 +1,4 @@
 <div class="container mt-4" id="question-conatiner">
-  <% if @question %>
   <p id="question-answer" hidden><%= @question.answer %></p>
   <div class="col-md-8 offset-md-2">
     <h3>
@@ -45,7 +44,6 @@
         <hr>
         <h4 id="question-result-feedback"></h4>
       </div>
-      <%= link_to "Next Question", next_question_path, class: "btn btn-success btn-block" %>
     </div>
     <div>
       <%= link_to star_question_path(@question), method: :post, remote: true do %>
@@ -57,12 +55,6 @@
       <% end %>
     </div>
   </div>
-  <% else %>
-  <div class="center">
-    <h3 align="center">You finished all the questions in this category!</h3>
-    <%= link_to "Back to subject page", show_subject_path(@subject.code), class: "btn btn-success btn-lg mt-4" %>
-  </div>
-  <% end %>
 </div>
 
 <script language="javascript">

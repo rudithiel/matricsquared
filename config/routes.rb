@@ -15,6 +15,14 @@ Rails.application.routes.draw do
   
   get '/practice/next', to: 'questions#next_question', as: 'next_question'
   
+  #USERS
+  get '/users/:username', to: 'users#show', as: 'user'
+  
+  #QUESTIONS
+  post 'question/:id/star', to: 'questions#star', as: 'star_question'
+  get 'question/:id', to: 'questions#show', as: 'show_question'
+  
+  
   ##ADMIN ONLY ROUTES##
   get 'admin', to: 'admins#admin_portal', as: 'admin_portal'
   

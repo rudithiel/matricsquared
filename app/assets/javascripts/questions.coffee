@@ -1,8 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-ready = ->
-  
+$(document).on 'turbolinks:load', ->
   textarea_id = "question-text"
   
   $('.control-btn').click (e) ->
@@ -36,7 +35,27 @@ ready = ->
     $('#textarea-preview').append($('#' + textarea_id).val()) 
     return
     
-  $('#question-answer-submit').click ->
+  fired = false
+    
+  $(document).keydown (e) ->
+    if e.which == 50 && e.ctrlKey && fired == false
+      fired = true
+      controlInput("<sup>2</sup>", textarea_id)
+    if e.which == 51 && e.ctrlKey && fired == false
+      fired = true
+      controlInput("<sup>3</sup>", textarea_id)
+    if e.which == 50 && e.altKey && fired == false
+      fired = true
+      controlInput("<sub>2</sub>", textarea_id)
+    if e.which == 51 && e.altKey && fired == false
+      fired = true
+      controlInput("<sub>3</sub>", textarea_id)
+  
+  $(document).keyup (e) ->
+    fired = false
+    
+  $('#question-answer-submit').click (e) ->
+    e.stopImmediatePropagation()
     questionAnswer = $('#question-answer').html()
     userAnswer = $('input[type="radio"][name="options"]:checked').val()
     
@@ -55,13 +74,23 @@ ready = ->
         $('#question-result-header').html("Oops!")
         $('#question-result-feedback').html("The correct answer is " + questionAnswer)
     return
+    
+  $('#star-question-icon').on 'click', (e) ->
+    if $(this).hasClass "fa-star"
+      $(this).removeClass('fa-star')
+      $(this).addClass('fa-star-o')
+    else if $(this).hasClass "fa-star-o"
+      $(this).removeClass('fa-star-o')
+      $(this).addClass('fa-star')
+    return
+
+    
   return
 
 
     
-$(document).ready(ready)
-$(document).on('page:load', ready)
-$(document).on('turbolinks:load', ready)
+###$(document).ready(ready)
+$(document).on('page:load', ready)###
   
 controlInput = (input, textarea_id) ->
   cursorPosition = $('#' + textarea_id).prop('selectionStart')
