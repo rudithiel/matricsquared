@@ -14,13 +14,13 @@ class UsersController < ApplicationController
   def remove_subject
     @subject = Subject.where(code: params[:code])
     current_user.subjects.delete(@subject)
-    render :edit_subjects
+    redirect_to edit_subjects_path
   end
   
   def add_subject
    @subject = Subject.where(code: params[:code]) 
    current_user.subjects.push(@subject)
-   render :edit_subjects
+   redirect_to edit_subjects_path
   end
   
 end

@@ -1,13 +1,35 @@
 <div class="container mt-4">
   <h1><%= @user.username.possessive %> profile</h1>
-  <div id="user-starred-questions" class="col col-md-4">
-    <h2 ><span class="fa fa-star fa-yellow mr-2"></span>Starred Questions</h2>
-    <% @starred_questions.each do |q| %>
-      <div class="m-1">
-        <% @question = Question.find(q.question_id) %>
-        <%= link_to truncate(@question.question, length: 100), show_question_path(@question), class: "text-white" %>
-      </div>
-    <% end %>
-    <%= will_paginate @starred_questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, align: "left" %>  
+  <div class="row">
+    <div id="user-starred-questions" class="col-12 col-md-6 col-lg-4">
+      <h2 ><span class="fa fa-star fa-yellow mr-2"></span>Starred Questions</h2>
+      <hr style="border-color: white">
+      <% @starred_questions.each do |q| %>
+        <div class="m-1">
+          <% @question = Question.find(q.question_id) %>
+          <%= link_to truncate(@question.question, length: 100), show_question_path(@question), class: "text-white" %>
+        </div>
+        <hr>
+      <% end %>
+      <%= will_paginate @starred_questions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, align: "left" %>  
+    </div>
+    <div id="subjects-mastery" class="col-12 col-md-6  col-lg-4">
+      <h2 ><span class="fa fa-tasks text-white mr-2"></span>Subject Mastery</h2>
+      <hr style="border-color: white">
+      <% background = ["bg-success", "bg-info", "bg-primary", "bg-warning", "bg-danger"] %>
+      <% @user.user_subjects.each do |subject| %>
+        <div>
+          <% @subject = Subject.find(subject.subject_id) %>
+          <div>
+            <h4><%= @subject.name %></h4>
+          </div>
+          <div class="progress">
+             <div class="progress-bar <%= background[rand(4)] %> progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= subject.mastery %>%;" 
+             aria-valuenow="<%= subject.mastery %>" aria-valuemin="0" aria-valuemax="100"></div>  
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
   </div>
 </div>

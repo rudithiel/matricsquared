@@ -9,7 +9,8 @@
               <% end %>
                 <td><h5><%= subject.name %></h5></td>
                 <% if current_user.subjects.include?(subject) %>
-                  <td><%= link_to "Remove", remove_subject_path(subject.code), method: :post, class: "btn btn-md btn-danger btn-block"  %></td>
+                  <td><%= link_to "Remove", remove_subject_path(subject.code), method: :post, 
+                  class: "btn btn-md btn-danger btn-block", data: {confirm: "Are you sure you want to remove this subject? All progress and mastery will be lost."}  %></td>
                 <% else %>
                   <td><%= link_to "Add", add_subject_path(subject.code), method: :post, class: "btn btn-md btn-info btn-block"  %></td>
                 <% end %>

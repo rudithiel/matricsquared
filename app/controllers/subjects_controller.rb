@@ -3,6 +3,7 @@ class SubjectsController < ApplicationController
   
   def show
     @subject = Subject.where(code: params[:code]).first
+    @user_subject = UserSubject.where(subject_id: @subject.id, user_id: current_user.id).first
     @paper1_categories = @subject.categories.where(:paper => 1)
     @paper2_categories = @subject.categories.where(:paper => 2) 
   end  
@@ -42,6 +43,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject = Subject.find(params[:id])
     if @subject.destroy
+      UserSubject.where(subject_id: @subject.id).destroy
       flash[:success] = "Successfully deleted the subject #{@subject.name}"
       redirect_to admin_portal_path
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116155359) do
+ActiveRecord::Schema.define(version: 20171117214249) do
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at",          null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20171116155359) do
     t.integer  "subject_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mastery",    default: 0
   end
 
   add_index "user_subjects", ["subject_id"], name: "index_user_subjects_on_subject_id"
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 20171116155359) do
     t.integer  "question_id"
     t.boolean  "starred"
     t.boolean  "answered_correctly"
+    t.integer  "subject_id"
   end
 
 end

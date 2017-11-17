@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   #QUESTIONS
   post 'question/:id/star', to: 'questions#star', as: 'star_question'
   get 'question/:id', to: 'questions#show', as: 'show_question'
+  post 'question/:id/answer/:answer', to: 'questions#answer', as: 'answer_question'
+  get 'question/:id/details', to: 'questions#get_details', as: 'get_details'
   
   
   ##ADMIN ONLY ROUTES##

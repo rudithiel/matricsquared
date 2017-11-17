@@ -55,25 +55,49 @@ $(document).on 'turbolinks:load', ->
     fired = false
     
   $('#question-answer-submit').click (e) ->
-    e.stopImmediatePropagation()
-    questionAnswer = $('#question-answer').html()
-    userAnswer = $('input[type="radio"][name="options"]:checked').val()
+    question_id = $('#question-id').html()          #Get variables from hidden HTML elements
+    user_answer = $('input[type="radio"][name="options"]:checked').val()
     
-    if (typeof userAnswer == 'undefined')
-      alert "Select an answer first"
-    else
-      $('#question-answer-submit').addClass("disabled")
-      $("#question-answer-submit").prop("disabled", "disabled")
-      $('#question-results').show()
-      if userAnswer == questionAnswer
-        $('#question-result-alert').addClass("alert alert-success")
-        $('#question-result-header').html("Well done!")
-        $('#question-result-feedback').html("You answered correctly")
-      else
-        $('#question-result-alert').addClass("alert alert-danger")
-        $('#question-result-header').html("Oops!")
-        $('#question-result-feedback').html("The correct answer is " + questionAnswer)
-    return
+    $.ajax "/question/" + question_id + "/details",
+            type: "GET"
+            datatype: "json"
+            error: (jqXHR, textStatus, errorThrown) ->
+              alert "Error reaching server. Please try again"
+            success: (data, textStatus, jqXHR) ->
+              question_answer = data.answer
+
+              if (typeof user_answer == 'undefined')
+                alert "Select an answer first"
+              else
+                #SEXY AJAX MAGIC
+                $.ajax "/question/" + question_id + "/answer/" + user_answer,
+                      type: "POST"
+                      datatype: "json"
+                      error: (jqXHR, textStatus, errorThrown) ->
+                            console.log "Error submitting answer"
+                            console.log jqXHR
+                            console.log textStatus
+                      success: (data, textStatus, jqXHR) ->
+                            console.log "Answer submitted to controller"
+                #Change classes of input
+                $('.question-answer-radio').addClass("disabled")
+                $('#question-option-label-' + question_answer).addClass("btn-success")
+                $('#question-option-label-' + question_answer).removeClass("btn-outline-warning")
+                $('#question-answer-submit').addClass("disabled")
+                $("#question-answer-submit").prop("disabled", "disabled")
+                $('#question-results').show()
+                if user_answer == question_answer
+                  $('#question-result-alert').addClass("alert alert-success")
+                  $('#question-result-header').html("Well done!")
+                  $('#question-result-feedback').html("You answered correctly")
+                else
+                  $('#question-option-label-' + user_answer).removeClass("btn-outline-warning")
+                  $('#question-option-label-' + user_answer).addClass("btn-danger")
+                  $('#question-result-alert').addClass("alert alert-danger")
+                  $('#question-result-header').html("Oops!")
+                  $('#question-result-feedback').html("The correct answer is " + question_answer)
+              return
+    
     
   $('#star-question-icon').on 'click', (e) ->
     if $(this).hasClass "fa-star"
@@ -87,10 +111,6 @@ $(document).on 'turbolinks:load', ->
     
   return
 
-
-    
-###$(document).ready(ready)
-$(document).on('page:load', ready)###
   
 controlInput = (input, textarea_id) ->
   cursorPosition = $('#' + textarea_id).prop('selectionStart')

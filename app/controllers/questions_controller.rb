@@ -39,6 +39,29 @@ class QuestionsController < ApplicationController
     end
   end
   
+  def get_details
+    @question = Question.find(params[:id])
+    details = {answer: @question.answer}
+    respond_to do |format|
+      format.json {render json: details}
+    end
+  end
+  
+  def answer
+    @answer = params[:answer]
+    @question = Question.find(params[:id])
+    set_viewed_question(@question.id)
+    if @question.answer == @answer 
+      @viewed_question.update(answered_correctly: true)
+    else
+      @viewed_question.update(answered_correctly: false)
+    end
+    update_user_subject_mastery(@question.subject_id)
+    respond_to do |format|
+      format.html {render nothing: true}
+    end
+  end
+  
   def star
     set_viewed_question(params[:id])
     if @viewed_question.starred?
@@ -83,10 +106,20 @@ class QuestionsController < ApplicationController
   
   private
   
+    def update_user_subject_mastery(subject_id)
+      @subject = Subject.find(subject_id)
+      @user = current_user
+      @user_subject = UserSubject.where(user_id: @user.id, subject_id: @subject.id).first
+      @total_questions = @subject.questions.count
+      @correct_questions = @user.viewed_questions.where(answered_correctly: true, subject_id: @subject.id).count
+      @mastery = ((@correct_questions.to_f / @total_questions.to_f) * 100).round
+      @user_subject.update(mastery: @mastery)
+    end
+  
     def set_viewed_question(question_id)
       @viewed_question = ViewedQuestion.where(question_id: question_id, user_id: current_user.id).first
       unless ViewedQuestion.exists?(question_id: question_id, user_id: current_user.id)
-        @viewed_question = ViewedQuestion.create(question_id: @question.id, user_id: current_user.id, starred: false, answered_correctly: false)
+        @viewed_question = ViewedQuestion.create(subject_id: @question.subject_id, question_id: @question.id, user_id: current_user.id, starred: false, answered_correctly: false)
       end  
     end
     

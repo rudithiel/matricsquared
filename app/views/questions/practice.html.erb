@@ -1,6 +1,7 @@
 <div class="container mt-4" id="question-conatiner">
   <% if @question %>
-  <p id="question-answer" hidden><%= @question.answer %></p>
+  <!-- Hidden element where Coffeescript can get variables from -->
+  <p id="question-id" hidden><%= @question.id %></p>         
   <div class="col-md-8 offset-md-2">
     <h3>
       <%= raw("<h4>" + @question.question + "</h4>") %>
@@ -22,17 +23,17 @@
         <%= raw("<h6>D. " + @question.option4 + "</h6>") %>
       </div>
     </div>
-    <div class="btn-group btn-group-lg mt-3" data-toggle="buttons" style="width: 100%">
-      <label class="btn col-4 btn-outline-warning">
+    <div class="btn-group btn-group-lg mt-2" data-toggle="buttons" style="width: 100%">
+      <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-A">
         <input type="radio" name="options" id="question-option-A" autocomplete="off" value="A">A
       </label>
-      <label class="btn col-4 btn-outline-warning ">
+      <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-B">
         <input type="radio" name="options" id="question-option-B" autocomplete="off" value="B">B
       </label>
-      <label class="btn col-4 btn-outline-warning ">
+      <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-C">
         <input type="radio" name="options" id="question-option-C" autocomplete="off" value="C">C
       </label>
-      <label class="btn col-4 btn-outline-warning ">
+      <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-D">
         <input type="radio" name="options" id="question-option-D" autocomplete="off" value="D">D
       </label>
     </div>  
@@ -44,7 +45,17 @@
         <h3 id="question-result-header"></h3>
         <hr>
         <h4 id="question-result-feedback"></h4>
+        <% if @question.memo.file? %>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#question-memo" aria-expanded="false" aria-controls="question-memo">
+            View question memo
+          </button>
+        <% end %>
       </div>
+      <% if @question.memo.file? %>
+        <div id="question-memo" class="collapse mb-2">
+          <%= image_tag(@question.memo.url, :width => "100%") %>  
+        </div>
+      <% end %>
       <%= link_to "Next Question", next_question_path, class: "btn btn-success btn-block" %>
     </div>
     <div>
