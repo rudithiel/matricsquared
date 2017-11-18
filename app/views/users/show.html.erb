@@ -7,7 +7,7 @@
       <% @starred_questions.each do |q| %>
         <div class="m-1">
           <% @question = Question.find(q.question_id) %>
-          <%= link_to truncate(@question.question, length: 100), show_question_path(@question), class: "text-white" %>
+          <%= link_to truncate(raw(@question.question), length: 100), show_question_path(@question), class: "text-white" %>
         </div>
         <hr>
       <% end %>
