@@ -67,6 +67,11 @@
         <% end %>
       <% end %>
     </div>
+  <% if current_user.admin? %>
+    <%= link_to edit_question_path(@question), class: "btn btn-warning btn-md" do %>
+      <span class="fa fa-pencil-square-o mr-2"></span>Edit
+    <% end %>
+  <% end %>
   </div>
   <% else %>
   <div class="center">
