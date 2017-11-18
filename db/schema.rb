@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117214249) do
+ActiveRecord::Schema.define(version: 20171118125124) do
 
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at",          null: false
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20171117214249) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "answer"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "subject_id"
     t.string   "question"
     t.string   "option1"
@@ -44,14 +44,15 @@ ActiveRecord::Schema.define(version: 20171117214249) do
     t.string   "memo_content_type"
     t.integer  "memo_file_size"
     t.datetime "memo_updated_at"
+    t.string   "description",          default: ""
   end
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
     t.integer  "papers"
     t.string   "code"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "banner_file_name"
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20171117214249) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "theme",               default: "success"
   end
 
   create_table "user_subjects", force: :cascade do |t|

@@ -34,6 +34,7 @@ class SubjectsController < ApplicationController
   def update
     @subject = Subject.find(params[:id])
     if @subject.update(subject_params)
+      flash[:success] = "Successfully updated #{@subject.name}"
       redirect_to admin_portal_path
     else
       render :edit
@@ -44,7 +45,7 @@ class SubjectsController < ApplicationController
     @subject = Subject.find(params[:id])
     if @subject.destroy
       UserSubject.where(subject_id: @subject.id).destroy
-      flash[:success] = "Successfully deleted the subject #{@subject.name}"
+      flash[:success] = "Successfully deleted #{@subject.name}"
       redirect_to admin_portal_path
     else
       flash[:danger] = "Couldn't delete the requested subject"
@@ -54,7 +55,7 @@ class SubjectsController < ApplicationController
   
   private
     def subject_params
-      params.require(:subject).permit(:name, :code, :papers, :banner, :avatar)
+      params.require(:subject).permit(:name, :code, :papers, :banner, :avatar, :theme)
     end
     
     def authorized?

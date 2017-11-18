@@ -10,4 +10,5 @@ class Subject < ActiveRecord::Base
   validates :name, presence: true
   validates :papers, presence: true
   validates :code, presence: true, uniqueness: true, length: {is: 4}
+  validates :theme, presence: true
 end

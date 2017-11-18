@@ -24,7 +24,7 @@
             <h4><%= @subject.name %></h4>
           </div>
           <div class="progress">
-             <div class="progress-bar <%= background[rand(4)] %> progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= subject.mastery %>%;" 
+             <div class="progress-bar bg-<%= @subject.theme %> progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= subject.mastery %>%;" 
              aria-valuenow="<%= subject.mastery %>" aria-valuemin="0" aria-valuemax="100"></div>  
           </div>
         </div>
