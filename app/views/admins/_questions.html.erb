@@ -15,7 +15,7 @@
           <% end %>
           <% if question.memo.file? %>
             <div class="col-sm-6">
-              <%= image_tag(question.memo.url, :maxwidth => "100%", :maxheight => "100%") if question.memo.file? %>
+              <%= image_tag(question.memo.url, :width => "100%") if question.memo.file? %>
             </div>
           <% end %>
           <div class="col-sm-6">

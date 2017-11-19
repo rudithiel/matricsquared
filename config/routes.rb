@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   
   ##ADMIN ONLY ROUTES##
   get 'admin', to: 'admins#admin_portal', as: 'admin_portal'
+  get 'questions/query', to: 'admins#query_questions', as: 'questions_query'
+  post 'questions/query', to: 'admins#perform_query'
   
   #CREATE
   get 'admin/new_question', to: 'questions#new', as: 'new_question'

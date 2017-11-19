@@ -3,8 +3,9 @@
     <%= link_to raw root_path do %>
       <p class="navbar-brand">Matric&sup2;</p>
     <% end %>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navToggler" aria-controls="navToggler" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navToggler" 
+    aria-controls="navToggler" aria-expanded="false" aria-label="Toggle navigation" id="nav-collapse-toggler">
+      <span class="fa fa-bars" id="nav-collapse-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse" id="navToggler">
@@ -36,10 +37,14 @@
           </li>  
         <% else %>
           <li>
-            <%= link_to "Sign Up ", new_user_registration_path, class: "nav-item" %> 
+            <%= link_to new_user_registration_path, class: "nav-item" do %>
+              <span class="fa fa-user-plus mr-1"></span> Register
+            <% end %>
           </li>
           <li>
-            <%= link_to " Login", new_user_session_path, class: "nav-item" %>  
+            <%= link_to new_user_session_path, class: "nav-item" do %>
+              <span class="fa fa-sign-in mr-1"></span> Login
+            <% end %>
           </li> 
         <% end %>
       </ul>

@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h2 align="center">
+    Query existing questions
+  </h2>
+  <div class="center col-md-4 offset-md-4">
+    <%= form_tag({:controller => "admins", :action => "query_questions"}, remote: true) do  %>
+      <%= text_area_tag :string , params[:string], class: "form-control", placeholder: "Enter string to query by"  %>
+      <%= submit_tag "Search", class: "btn btn-primary btn-block mt-1" %>
+    <% end %>
+  </div>
+  <div class="mt-2">
+    <% if not @questions.nil? %>
+      <h2 align="center"><%= pluralize(@questions.count, "question") %> match the query</h2>
+      <%= render 'questions' %>
+    <% else %>
+      <h2 align="center">No questions matched the query</h2>
+    <% end %>
+  </div>
+</div>

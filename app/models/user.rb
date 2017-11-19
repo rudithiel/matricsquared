@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   validates :province, presence: true
   validates :username, presence: true, uniqueness: true, length: {minimum: 3}
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
 end

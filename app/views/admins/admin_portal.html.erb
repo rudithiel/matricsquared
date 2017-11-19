@@ -10,8 +10,15 @@
     </div>
     <div class="col-md">
       <h2><span class="fa fa-table mr-2"></span>View</h2>  
-      <%= link_to "Users", users_path, class: "btn btn-success btn-block" %>
-      <%= link_to "Subjects", subjects_path, class: "btn btn-light btn-block" %>
+      <%= link_to users_path, class: "btn btn-success btn-block" do %>
+        <span class="fa fa-users mr-1"></span>Users
+      <% end %>
+      <%= link_to subjects_path, class: "btn btn-light btn-block" do %>
+        <span class="fa fa-list"></span> Subjects
+      <% end %>
+      <%= link_to questions_query_path, class: "btn btn-info btn-block" do %>
+        <span class="fa fa-search"></span> Query Questions
+      <% end %>
     </div>
   </div>
 </div>

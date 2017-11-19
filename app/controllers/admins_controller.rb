@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_filter :authorized?
+  @@query_questions = nil
   
   def users
     @users = User.all
@@ -35,7 +36,19 @@ class AdminsController < ApplicationController
     @questions = @category.questions.paginate(:page => params[:page], :per_page => 6)
   end
   
+  def query_questions
+    if @@query_questions.nil? == false
+      @questions = @@query_questions
+    end
+    render :query_questions
+  end
   
+  def perform_query
+    if params.has_key?(:string)
+      @@query_questions = Question.where("question LIKE '%#{params[:string]}%'").paginate(:page => params[:page], :per_page => 5)
+    end
+    redirect_to questions_query_path()
+  end
   
   def destroy_category_question
     @question = Question.find(params[:id])

@@ -17,3 +17,23 @@
 //= require jquery_ujs
 //= require_tree .
 //= require turbolinks
+
+/* global $ */
+
+/* All javascripts not belonging to a specific controller/model */
+
+$(document).ready(function(){
+  
+  $('#nav-collapse-toggler').click(function() {
+    if ($(this).attr("aria-expanded") == "false") {
+      $('#nav-collapse-toggler-icon').removeClass("fa-bars");
+      $('#nav-collapse-toggler-icon').addClass("fa-times");
+    } else if ($(this).attr("aria-expanded") == "true") {
+      $('#nav-collapse-toggler-icon').removeClass("fa-times");
+      $('#nav-collapse-toggler-icon').addClass("fa-bars");
+    }
+  });
+  
+ 
+  
+});
