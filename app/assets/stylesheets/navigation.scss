@@ -3,10 +3,12 @@
 .navbar {
   background-color: #03a9f4;  
   color: white;
+  
 }
 
 .navbar-brand {
-  font-size: 1.9rem;
+  font-size: 2rem;
+  padding: 4px;
   color: white;
   &:hover {
     color: white;

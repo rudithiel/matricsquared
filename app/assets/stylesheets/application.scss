@@ -48,8 +48,10 @@ select:focus,
 
 body {
   padding-top: 60px;
-  background-color: #343a40;
-  min-height: 400px;
+}
+
+.app-content {
+  min-height: 57.4vh;
 }
 
 .text-white {
@@ -126,6 +128,7 @@ body {
   html {
     font-size: 8px;
   }
+
 }
 
 @import "navigation";

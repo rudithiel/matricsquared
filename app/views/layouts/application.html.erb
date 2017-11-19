@@ -10,9 +10,11 @@
     <%= csrf_meta_tags %>
     
   </head>
-    <%= render 'layouts/navbar' %>
   <body class="bg-dark text-white">
+    <%= render 'layouts/navbar' %>
+    <div class="app-content">
       <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
-  <%= render 'layouts/footer' %>
 </html>
