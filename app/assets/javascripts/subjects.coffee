@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
   $('#paper-2-categories').hide()
+  $('#paper-2-practice').hide()
   
   $('#paper-1-toggle').click (e) ->
     e.stopImmediatePropagation()
@@ -10,6 +11,8 @@ ready = ->
     $('#paper-2-categories').hide()
     $('#paper-2-toggle').removeClass("active")
     $('#paper-1-toggle').addClass("active")
+    $('#paper-1-practice').show()
+    $('#paper-2-practice').hide()
     
   $('#paper-2-toggle').click (e) ->
     e.stopImmediatePropagation()
@@ -17,7 +20,8 @@ ready = ->
     $('#paper-1-categories').hide()
     $('#paper-1-toggle').removeClass("active")
     $('#paper-2-toggle').addClass("active")
-  
+    $('#paper-2-practice').show()
+    $('#paper-1-practice').hide()
   
 $(document).ready(ready)
 $(document).on('page:load', ready)

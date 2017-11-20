@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   post 'subject/:code/remove', to: 'users#remove_subject', as: 'remove_subject'
   get 'subject/:code', to: 'subjects#show', as: 'show_subject'
   get 'faq', to: 'pages#faq', as: 'faq'
-  get 'users', to: 'admins#users', as: 'users'
+  get 'privacy_policy', to: 'pages#privacy_policy', as: 'privacy_policy'
   
   get 'practice/category/:id', to: 'questions#category_practice', as: 'category_practice'
-  get 'practice/subject/:code', to: 'questions#subject_practice', as: 'subject_practice'
+  get 'practice/subject/:code/:paper', to: 'questions#paper_practice', as: 'paper_practice'
   
   get '/practice/next', to: 'questions#next_question', as: 'next_question'
   
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   
   
   ##ADMIN ONLY ROUTES##
+  get 'users', to: 'admins#users', as: 'users'
   get 'admin', to: 'admins#admin_portal', as: 'admin_portal'
   get 'questions/query', to: 'admins#query_questions', as: 'questions_query'
   post 'questions/query', to: 'admins#perform_query'

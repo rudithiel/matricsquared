@@ -1,16 +1,22 @@
-<div class="container mt-4 center">
+<div class="container mt-4">
   <%= image_tag(@subject.banner.url, :width => "100%", class: "rounded") %>
-    <div class="btn-group mt-2" role="group">
-      <button id="paper-1-toggle" class="btn btn-info btn-lg active">Paper 1</button>
-      <button id="paper-2-toggle" class="btn btn-info btn-lg">Paper 2</button>
+  <div class="row">
+    <div class="btn-group mt-2 ml-4" role="group">
+      <button id="paper-1-toggle" class="btn btn-outline-warning btn-lg active">Paper 1</button>
+      <button id="paper-2-toggle" class="btn btn-outline-warning btn-lg">Paper 2</button>
     </div>
+    <div class="mt-2 ml-4">
+      <%= link_to "Practice entire paper 1", paper_practice_path(@subject.code, 1),id:"paper-1-practice", class:"btn btn-warning btn-lg"  %>
+      <%= link_to "Practice entire paper 2", paper_practice_path(@subject.code, 2),id:"paper-2-practice", class:"btn btn-warning btn-lg"  %>
+    </div>
+  </div>
     <div id="paper-1-categories">
       <div class="row">
         <% @paper1_categories.each do |category| %>
           <div class="col-md-4 col-sm-6  text-white category-container p-4 my-2">
             <div class="row">
               <div class="col-sm-6 col-6">
-                <%= image_tag(category.avatar.url, :width => "80%", class: "rounded-circle mr-auto category-pic") %>
+                <%= image_tag(category.avatar.url, :width => "70%", class: "rounded-circle mr-auto category-pic") %>
               </div>
               <div class="col-sm-6 col-6 p-2">
                 <h3 align="left"><%= category.name %> </h3> 
@@ -27,7 +33,7 @@
             <div class="col-md-4 col-sm-6  text-white category-container p-4 my-2">
               <div class="row">
                 <div class="col-sm-6 col-6">
-                  <%= image_tag(category.avatar.url, :width => "80%", class: "rounded-circle mr-auto category-pic") %>
+                  <%= image_tag(category.avatar.url, :width => "70%", class: "rounded-circle mr-auto category-pic") %>
                 </div>
                 <div class="col-sm-6 col-6 p-2">
                   <h3 align="left"><%= category.name %> </h3> 

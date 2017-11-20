@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   
   before_filter :set_category_questions, only: [:category_practice]
+  before_filter :set_paper_questions, only: [:paper_practice]
   before_filter :authorized?, only: [:new, :create, :edit, :update]
   
   def show
@@ -76,7 +77,13 @@ class QuestionsController < ApplicationController
   end
   
   def category_practice
-    @question = @@questions.find(@@question_ids[0])
+    @question = Question.find(@@question_ids[0])
+    set_viewed_question(@question.id)
+    render :practice
+  end
+  
+  def paper_practice
+    @question = Question.find(@@question_ids[0])
     set_viewed_question(@question.id)
     render :practice
   end
@@ -92,7 +99,7 @@ class QuestionsController < ApplicationController
     @subject = Subject.find(Question.find(@@question_ids[0]).subject_id)
     @@question_ids.shift
     if @@question_ids.length != 0
-      @question = @@questions.find(@@question_ids[0])
+      @question = Question.find(@@question_ids[0])
       set_viewed_question(@question.id)
     end
     render :practice
@@ -129,6 +136,18 @@ class QuestionsController < ApplicationController
       @@question_ids = []
       @@questions.each do |q|
         @@question_ids.push(q.id)
+      end
+      @@question_ids.shuffle!
+    end
+    
+    def set_paper_questions
+      @subject = Subject.where(code: params[:code]).first
+      @@categories = Category.where(subject_id: @subject.id, paper: params[:paper])
+      @@question_ids = []
+      @@categories.each do |c|
+        c.questions.each do |q|
+          @@question_ids.push(q.id)
+        end
       end
       @@question_ids.shuffle!
     end

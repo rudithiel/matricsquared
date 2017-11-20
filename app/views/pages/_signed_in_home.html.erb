@@ -2,18 +2,23 @@
   <h1 align="center">
     My subjects
   </h1>
-  <div class="row">
-    <% current_user.subjects.each do |subject| %>
-      <div class="col-lg p-3">
-        <div class="center">
-          <%= link_to image_tag(subject.avatar.url, class: "rounded-circle border border-secondary", :width => 120, :height => 120, :crop => :fill), show_subject_path(subject.code) %>
-        </div>
-        <div class="link">
-          <h4 align="center" class="mt-2"><%= link_to subject.name, show_subject_path(subject.code), class: "text-white" %></h4>  
-        </div>
+  <% if current_user.subjects.any? %>
+    <div class="row">
+      <% current_user.subjects.each do |subject| %>
+        <div class="col-12 col-md-6 p-3 row">
+          <div class="col-4">
+            <%= link_to image_tag(subject.avatar.url, class: "rounded-circle border border-secondary", style: "float:right", :width => "80%", :crop => :fill), show_subject_path(subject.code) %>
+          </div>
+          <div class="col-8">
+            <h4 class="ml-2" style="font-size: 2rem"><%= link_to subject.name, show_subject_path(subject.code), class: "text-white" %></h4>  
+          </div>
           
-      </div>  
+        </div>  
+      <% end %>
+    </div>
+    <% else %>
+      <div class="center mt-3">
+        <h4>You have no subjects yet, you can add subjects <%= link_to "here", edit_subjects_path %></h4>
+      </div>
     <% end %>
-  </div>
-  <%= "Jirre jissis" if @subject %>
 </div>
