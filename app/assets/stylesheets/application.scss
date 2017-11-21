@@ -1,9 +1,42 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Lato);
+
+$red: #E94F64;
+$green: #52D273;
+$blue: #46BCDE;
+$orange: #E57254;
+$yellow: #E5C454;
+$lightgrey: #D6D8DE;
+$darkslategrey: #484848;
+
+.blue {
+	color: $blue;
+}
+
+.green {
+	color: $green;
+}
+
+.red {
+	color: $red;
+}
+
+.orange {
+	color: $orange;
+}
+
+.yellow {
+	color: $yellow;
+}
+
+.lightgrey {
+	color: $lightgrey;
+}
+
 html {
   font-family: 'Lato', sans-serif;
   font-size: 17px;
-  background-color: #343a40;
+  background-color: $darkslategrey;
   h1 {
     font-size: 3rem;
   }
@@ -47,7 +80,10 @@ select:focus,
 }
 
 body {
-  padding-top: 60px;
+  position: relative;
+  font-family: lato;
+	background-color: $darkslategrey;
+	padding-top: 65px;
 }
 
 .app-content {
@@ -66,10 +102,6 @@ body {
 
 .center {
   text-align: center;
-}
-
-.blue {
-  background: #03a9f4;
 }
 
 .white {
@@ -106,34 +138,40 @@ body {
     justify-content: center;
 }
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 @media (min-width: 1200px){
   html {
-    font-size: 20px;
+    font-size: 23px;
   }
 }
 
 @media (min-width: 768px){
   html {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 350px){
   html {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 350px){
   html {
-    font-size: 8px;
+    font-size: 10px;
   }
-
 }
 
 @import "navigation";
-@import "home";
 @import "footer";
 @import "admins";
 @import "subjects";
 @import "questions";
+@import "homepage";

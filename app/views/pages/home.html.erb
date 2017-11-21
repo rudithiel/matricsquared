@@ -1,6 +1,241 @@
 <% if user_signed_in? %>
   <%= render 'signed_in_home' %>
 <% else %>
-  <%= render 'layouts/carousel' %>
-  <img id="how-it-works">
+  	<div class="jumbotron container bg-black">
+			<h1 class="fat-text" style="font-size: 50px">Welcome to <span class="blue">Matric<sup>2</sup></span></h1>
+			<h3 class="fattish-text">Your <span class="red">essential</span> Matric study help.</h3>
+			<p class="fattish-text">Past <span class="yellow">NSC</span> paper questions categorised by subject and chapter</p>
+			<nav>
+    		<a class="mt-4" href="#how-it-works" style="height: 50px;">
+  			  <button id="learn-more-button">
+    			  Tell me more
+    			 </button>
+    		</a>
+			</nav>
+		</div>
+		<div class="bg-black div-shadow p-3" id="how-it-works">
+		  <div class="container text-center">
+		    <h1 class="fat-text lightgrey">HOW IT WORKS</h1>
+		    <div class="seperator-blue mr-auto ml-auto"></div>
+		  </div>
+		</div>
+		<div class="row mt-3">
+		  <div class="col-lg-7 my-2">
+			 <div class="col-lg-12 div-shadow bg-black b-top-green pb-2">
+				<h2 class="green fat-text mt-3 text-right">CREATE YOUR ACCOUNT</h2>
+				 <div class="row my-2">
+					<div class="col text-right">Name</div>
+				 	<div class="input-field mr-3"><p class="input-field-text">Koos</p></div>
+				 </div>
+				 <div class="row my-2">
+					<div class="col text-right">Username</div>
+				 	<div class="input-field mr-3"><p class="input-field-text">Koosie123</p></div>
+				 </div>
+				 <div class="row my-2">
+					<div class="col text-right">Email</div>
+				 	<div class="input-field mr-3"><p class="input-field-text">koos@gmail.com</p></div>
+				 </div>
+				 <div class="row my-2">
+					<div class="col text-right">Password</div>
+				 	<div class="input-field mr-3"><p class="input-field-text">••••••••••</p></div>
+				 </div>
+				 <div class="row my-2">
+					<div class="col text-right">Confirm Password</div>
+				 	<div class="input-field mr-3"><p class="input-field-text">••••••••••</p></div>
+				 </div>
+				 <div class="text-right">
+				 	<button id="create-account-button">
+						Register
+					 </button>
+				 </div>
+			 </div>
+		  </div>
+			<div class="col-lg-4 my-2 ml-auto">
+			 <div class="col-lg-12">
+				 <div class="flow-line flow-right"></div>
+			 </div>
+			</div>
+		</div>
+		<div class="row card-row mt-lg-2">
+		  <div class="col-lg-7 my-2 ml-auto">
+			 <div class="col-lg-12 bg-black text-white div-shadow text-left b-top-red pb-2" style="font-size: 20px">
+				<h2 class="red fat-text mt-3">CHOOSE YOUR SUBJECTS</h2>
+				 <div class="text-white" style="font-size: 20px">
+					 <p style="vertical-align:;"><span class="fa fa-square-o mr-3"></span>Afrikaans Huistaal</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-check-square-o mr-3"></span>Mathematics</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-check-square-o mr-3"></span>Physical Sciences</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-square-o mr-3"></span>Life Sciences</p>
+				 </div>
+				 <div style="margin-top: -20px">
+					 <p>. . .</p>
+				 </div>
+				 <div>
+				 	<button id="choose-subjects-button">
+						Continue
+					</button>
+				 </div>
+			 </div>
+		  </div>
+		</div>
+		<div class="row card-row mt-lg-2">
+		  <div class="col-lg-7 my-2 mr-auto">
+			 <div class="col-lg-12 bg-black text-white div-shadow text-right b-top-blue pb-2" style="font-size: 20px">
+				<h2 class="blue fat-text mt-3">PRACTICE A SUBJECT</h2>
+				 <div class="text-white" style="font-size: 20px">
+					 <p style="vertical-align:;"><span class="fa fa-square-o mr-3"></span>Afrikaans Huistaal</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-check-square-o mr-3"></span>Mathematics</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-check-square-o mr-3"></span>Physical Sciences</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-square-o mr-3"></span>Life Sciences</p>
+				 </div>
+				 <div style="margin-top: -20px">
+					 <p>. . .</p>
+				 </div>
+				 <div>
+				 	<button id="choose-subjects-button">
+						Continue
+					</button>
+				 </div>
+			 </div>
+		  </div>
+		</div>
+		<div class="row card-row mt-lg-2">
+		  <div class="col-lg-7 my-2 ml-auto">
+			 <div class="col-lg-12 bg-black text-white div-shadow text-left b-top-orange pb-2" style="font-size: 20px">
+				<h2 class="orange fat-text mt-3">CHOOSE A CHAPTER</h2>
+				 <div class="text-white" style="font-size: 20px">
+					 <p style="vertical-align:;"><span class="fa fa-square-o mr-3"></span>Afrikaans Huistaal</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-check-square-o mr-3"></span>Mathematics</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-check-square-o mr-3"></span>Physical Sciences</p>
+				 </div>
+				 <div>
+					 <p><span class="fa fa-square-o mr-3"></span>Life Sciences</p>
+				 </div>
+				 <div style="margin-top: -20px">
+					 <p>. . .</p>
+				 </div>
+				 <div>
+				 	<button id="choose-subjects-button">
+						Continue
+					</button>
+				 </div>
+			 </div>
+		  </div>
+		</div>
+		<div class="row card-row mt-lg-2">
+		  <div class="col-lg-7 my-2 mr-auto">
+			 <div class="col-lg-12 bg-black text-white div-shadow text-right b-top-yellow pb-2" style="font-size: 20px">
+				<h2 class="yellow fat-text mt-3">PRACTICE YOUR KNOWLEDGE</h2>
+				 <div class="text-white" style="font-size: 20px">
+					 <p>A constant net force acts on a trolley. According to Newton's Second Law, the acceleration of the trolley is … the mass of the trolley.</p>
+				 </div>
+				 <div>
+					 <p>A: equal to</p>
+				 </div>
+				 <div>
+					 <p>B: independent of</p>
+				 </div>
+				 <div>
+					 <p>C: directly proportional to</p>
+				 </div>
+				 <div>
+					 <p>D: inversely proportional to</p>
+				 </div>
+				 <div class="btn-group btn-group-lg col-md-7" style="margin-right: -15px;" data-toggle="buttons">
+					<label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-A">
+					<input type="radio" name="options" id="question-option-A" autocomplete="off" value="A">A
+				  </label>
+				  <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-B">
+					<input type="radio" name="options" id="question-option-B" autocomplete="off" value="B">B
+				  </label>
+				  <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-C">
+					<input type="radio" name="options" id="question-option-C" autocomplete="off" value="C">C
+				  </label>
+				  <label class="btn col-4 btn-outline-warning question-answer-radio" id="question-option-label-D">
+					<input type="radio" name="options" id="question-option-D" autocomplete="off" value="D">D
+				  </label>	 
+				 </div>
+				 <div>
+				 	<button id="submit-answer-button">
+						Submit
+					</button>
+				 </div>
+			 </div>
+		  </div>
+		</div>
+		</div>
+		<br><br><br>
+		<div class="bg-black div-shadow">
+			<div class="container py-3">
+				<h2 class="fat-text text-center lightgrey">FEATURES</h2>
+				<div class="seperator-red ml-auto mr-auto"></div>
+				<div class="row mt-4" style="font-size: 30px;">
+					<div class="col-md-4 text-center">
+						<div>
+							<span class="fa fa-mobile fa-3x"></span>
+						</div>
+						<div>
+							<h2>Mobile Friendly</h2>
+							<p class="small-text">Our website is optimised for both desktop and mobile devices, 
+								allowing you to practice on your device of preference</p>
+						</div>
+					</div>
+					<div class="col-md-4 text-center">
+						<div>
+							<span class="fa fa-tasks fa-3x"></span>
+						</div>
+						<div>
+							<h2>Track Progress</h2>
+							<p class="small-text">We keep track of the questions you have already correctly answered, 
+								so you never have to do the same question twice</p>
+						</div>
+					</div>
+					<div class="col-md-4 text-center">
+						<i class="fa fa-star fa-3x"></i>
+						<div>
+							<h2>Star Questions</h2>
+							<p class="small-text">See a question that you struggle with or want to view later? Star it and 
+								access it from your profile at any time</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br><br>
+		<div class="bg-black div-shadow">
+			<div class="container py-3">
+				<h2 class="fat-text text-center">CONNECT WITH US</h2>
+				<div class="seperator-green ml-auto mr-auto"></div>
+				<div class="row mt-4" style="font-size: 60px">
+					<div class="col-6 col-md-3 text-center my-3">
+						<i class="fa fa-facebook" id="facebook-icon"></i>
+					</div>
+					<div class="col-6 col-md-3 text-center my-3">
+						<i class="fa fa-twitter" id="twitter-icon"></i>
+					</div>
+					<div class="col-6 col-md-3 text-center my-3">
+						<i class="fa fa-linkedin" id="linkedin-icon"></i>
+					</div>
+					<div class="col-6 col-md-3 text-center my-3">
+						<i class="fa fa-envelope" id="mail-icon"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br><br>
 <% end %>
