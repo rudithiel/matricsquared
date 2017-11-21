@@ -35,7 +35,7 @@ $(document).ready(function(){
   });
   
   $('.counter').counterUp({
-    value:  1200
+    time: 3000
   });
   
 });
