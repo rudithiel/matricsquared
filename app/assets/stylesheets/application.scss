@@ -80,6 +80,7 @@ select:focus,
 }
 
 body {
+  overflow-x: hidden;
   position: relative;
   font-family: lato;
 	background-color: $darkslategrey;
