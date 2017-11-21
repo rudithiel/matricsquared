@@ -34,8 +34,9 @@ $darkslategrey: #484848;
 }
 
 html {
+  margin: 0;
   font-family: 'Lato', sans-serif;
-  font-size: 17px;
+  font-size: 14px;
   background-color: $darkslategrey;
   h1 {
     font-size: 3rem;
@@ -80,11 +81,13 @@ select:focus,
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
   overflow-x: hidden;
   position: relative;
   font-family: lato;
 	background-color: $darkslategrey;
-	padding-top: 65px;
 }
 
 .app-content {
@@ -116,21 +119,9 @@ body {
   }
 }
 
-.login-signup-form {
-  background-color: rgba(244,134,3,0.8);
-}
-
 .big-checkbox {
   width: 20px;
   height: 20px;
-}
-
-#about-us-heading {
-  margin-top: 25px;
-  font-weight: 300;
-  font-size: 4rem;
-  color: #03a9f4;
-  text-align: center;
 }
 
 .pagination {
