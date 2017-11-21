@@ -19,7 +19,7 @@
 		    <div class="seperator-blue mr-auto ml-auto"></div>
 		  </div>
 		</div>
-		  <div class="col-lg-7 my-2">
+		  <div class="col-lg-7 my-4">
 			 <div class="col-lg-12 div-shadow bg-black b-top-green pb-2">
 				<h2 class="green fat-text mt-3 text-right">CREATE YOUR ACCOUNT</h2>
 				 <div class="row my-2">
@@ -49,7 +49,7 @@
 				 </div>
 		  </div>
 		</div>
-		  <div class="col-lg-7 my-2 ml-auto">
+		  <div class="col-lg-7 my-4 ml-auto">
 			 <div class="col-lg-12 bg-black text-white div-shadow text-left b-top-red pb-2" style="font-size: 20px">
 				<h2 class="red fat-text mt-3">CHOOSE YOUR SUBJECTS</h2>
 				 <div class="text-white" style="font-size: 20px">
@@ -74,7 +74,7 @@
 				 </div>
 			 </div>
 		  </div>
-		  <div class="col-lg-7 my-2 mr-auto">
+		  <div class="col-lg-7 my-4 mr-auto">
 			 <div class="col-lg-12 bg-black text-white div-shadow text-right b-top-blue pb-2" style="font-size: 20px">
 				<h2 class="blue fat-text mt-3">PRACTICE A SUBJECT</h2>
 				 <div class="text-white" style="font-size: 20px">
@@ -99,7 +99,7 @@
 				 </div>
 			 </div>
 		  </div>
-		  <div class="col-lg-7 my-2 ml-auto">
+		  <div class="col-lg-7 my-4 ml-auto">
 			 <div class="col-lg-12 bg-black text-white div-shadow text-left b-top-orange pb-2" style="font-size: 20px">
 				<h2 class="orange fat-text mt-3">CHOOSE A CHAPTER</h2>
 				 <div class="text-white" style="font-size: 20px">
@@ -124,7 +124,7 @@
 				 </div>
 			 </div>
 		  </div>
-		  <div class="col-lg-7 my-2 mr-auto">
+		  <div class="col-lg-7 my-4 mr-auto">
 			 <div class="col-lg-12 bg-black text-white div-shadow text-right b-top-yellow pb-2" style="font-size: 20px">
 				<h2 class="yellow fat-text mt-3">PRACTICE YOUR KNOWLEDGE</h2>
 				 <div class="text-white" style="font-size: 20px">
@@ -164,8 +164,7 @@
 			 </div>
 		  </div>
 		</div>
-		<br><br><br>
-		<div class="bg-black div-shadow">
+		<div class="bg-black div-shadow info-div">
 			<div class="container py-3">
 				<h2 class="fat-text text-center lightgrey">FEATURES</h2>
 				<div class="seperator-red ml-auto mr-auto"></div>
@@ -201,8 +200,27 @@
 				</div>
 			</div>
 		</div>
-		<br><br><br>
-		<div class="bg-black div-shadow">
+		<div class="bg-black div-shadow info-div">
+		  <div class="container py-3">
+		    <h2 class="fat-text lightgrey text-center">DATABASE</h2>  
+		    <div class="seperator-yellow ml-auto mr-auto"></div>
+		    <div class="row text-center mt-4">
+		      <div class="col-md-4">
+		        <h2 class="fat-text"><span class="counter" id="<%= Subject.all.count %>"></span></h2>
+		        <h3 class="fattish-text">Subjects</h3>
+		      </div>
+		      <div class="col-md-4">
+		        <h2 class="fat-text"><span class="counter" id="<%= Category.all.count %>"></span></h2>
+		        <h3 class="fattish-text">Chapters</h3>
+		      </div>
+		      <div class="col-md-4">
+		        <h2 class="fat-text"><span class="counter" id="<%= Question.all.count %>"></span></h2>
+		        <h3 class="fattish-text">Questions</h3>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="bg-black div-shadow info-div">
 			<div class="container py-3">
 				<h2 class="fat-text text-center">CONNECT WITH US</h2>
 				<div class="seperator-green ml-auto mr-auto"></div>
@@ -222,5 +240,4 @@
 				</div>
 			</div>
 		</div>
-		<br><br><br>
 <% end %>
