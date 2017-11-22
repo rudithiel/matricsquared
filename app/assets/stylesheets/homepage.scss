@@ -14,26 +14,33 @@ body {
 	color: white;
 }
 
-.fat-text {
-	font-weight: 800;
-}
-
-.fattish-text {
-	font-weight: 600;
-}
 
 #learn-more-button {
 	background-color: transparent;
-	width: 200px;
+	width: 150px;
 	height: 50px;
 	color: #E57254;
 	border-radius: 50px;
 	border: 2px solid $orange;
+	&:hover {
+		color: #333;
+	  background-color: $orange;	
+	}
 }
 
-#learn-more-button:hover {
-	color: #333;
-	background-color: $orange;
+#register-button {
+	background-color: transparent;
+	margin-top: 20px;
+	margin-left: 5px;
+	width: 150px;
+	height: 50px;
+	color: $green;
+	border-radius: 50px;
+	border: 2px solid $green;	
+	&:hover {
+		background-color: $green;
+		color: $black;
+	}
 }
 
 #create-account-button {
@@ -81,28 +88,40 @@ body {
 	color: #333;
 }
 
+#facebook-icon {
+	transition-property: color;
+	-webkit-transition: 1s ease;
+}
+
 #facebook-icon:hover {
 	color: #3B5998;
+}
+
+#twitter-icon {
+	transition-property: color;
+	-webkit-transition: 1s ease;
 }
 
 #twitter-icon:hover {
 	color: #0084b4;
 }
 
+#linkedin-icon {
+	transition-property: color;
+	-webkit-transition: 1s ease;
+}
+
 #linkedin-icon:hover {
 	color: #0097d3;
 }
 
+#mail-icon {
+	transition-property: color;
+	-webkit-transition: 1s ease;
+}
+
 #mail-icon:hover {
 	color: $orange;
-}
-
-.div-shadow {
-	box-shadow: 0px 4px 20px 3px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.info-div {
-	margin: 70px 0px;
 }
 
 .input-field {
@@ -119,71 +138,6 @@ body {
 	margin-left: 6px;
 }
 
-.small-text {
-	font-size: 13px;
-	font-style: italic;
-}
-
-.seperator-red {
-	width: 120px;
-	height: 3px;
-	background-color: $red;
-}
-
-.seperator-yellow {
-	background-color: $yellow;
-	width: 120px;
-	height: 3px;
-}
-
-.seperator-green {
-	width: 120px;
-	height: 3px;
-	background-color: $green;
-}
-
-.seperator-blue {
-  background-color: $blue;
-  width: 200px;
-  height: 3px;
-}
-
-.flow-line {
-	width: 2px;
-	height: 2px;
-	background-color: transparent;
-	position: absolute;
-	z-index: -1;
-	/* -webkit-animation: flow-animation-mobile 3s infinite; */
-}
-
-.b-top-green {
-	border-top: 5px solid #52D273;
-}
-
-.b-top-red {
-	border-top: 5px solid #E94F64;
-}
-
-.b-top-blue {
-	border-top: 5px solid #46BCDE;
-}
-
-.b-top-orange {
-	border-top: 5px solid #e57254;
-}
-
-.b-top-yellow {
-	border-top: 5px solid #e5c454;
-}
-
-.navbar {
-	background-color: #46BCDE;
-}
-
-.bg-black {
-	background-color: #333333;
-}
 
 @media only screen and (min-width: 991px){
 

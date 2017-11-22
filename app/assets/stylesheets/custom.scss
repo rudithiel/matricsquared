@@ -1,0 +1,83 @@
+
+.fat-text {
+	font-weight: 800;
+}
+
+.fattish-text {
+	font-weight: 600;
+}
+
+.div-shadow {
+	box-shadow: 0px 4px 20px 3px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info-div {
+	margin: 70px 0px;
+}
+
+
+.small-text {
+	font-size: 13px;
+	font-style: italic;
+}
+
+.seperator-red {
+	width: 100%;
+	height: 3px;
+	background-color: $red;
+}
+
+.seperator-yellow {
+	background-color: $yellow;
+	width: 100%;
+	height: 3px;
+}
+
+.seperator-green {
+	width: 100%;
+	height: 3px;
+	background-color: $green;
+}
+
+.seperator-blue {
+  background-color: $blue;
+  width: 100%;
+  height: 3px;
+}
+
+.flow-line {
+	width: 2px;
+	height: 2px;
+	background-color: transparent;
+	position: absolute;
+	z-index: -1;
+	/* -webkit-animation: flow-animation-mobile 3s infinite; */
+}
+
+.b-top-green {
+	border-top: 5px solid $green;
+}
+
+.b-top-red {
+	border-top: 5px solid $red;
+}
+
+.b-top-blue {
+	border-top: 5px solid $blue;
+}
+
+.b-top-orange {
+	border-top: 5px solid $orange;
+}
+
+.b-top-yellow {
+	border-top: 5px solid $yellow;
+}
+
+.navbar {
+	background-color: #46BCDE;
+}
+
+.bg-black {
+	background-color: #333333;
+}

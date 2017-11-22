@@ -35,7 +35,13 @@ $(document).ready(function(){
   });
   
   $('.counter').counterUp({
-    time: 3000
+    time: 1500
   });
+  
+  $('#learn-more-button').click(function(){
+    $('html, body').animate({ 
+      scrollTop: $("#how-it-works").offset().top
+    }, 200);
+  })
   
 });

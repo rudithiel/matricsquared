@@ -1,3 +1,61 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about-avatar {
+  width: 150px;
+	height: 150px;
+	box-sizing: border-box;
+	border: 5px white solid;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+	transform: translatey(0px);
+	animation: float 6s ease-in-out infinite;
+	img { width: 100%; height: auto; }
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.acknowledge-logo {
+	height: 100px;
+}
+
+#bootstrap-logo {
+	filter: brightness(100) invert(0);	
+	&:hover {
+		filter: none;	
+	}
+}
+
+#rails-logo {
+	filter: brightness(0) invert(1);
+	&:hover {
+		filter: none;	
+	}
+}
+
+#jquery-logo {
+	filter: brightness(0) invert(1);
+	&:hover {
+		filter: none;	
+	}
+}
+
+#font-awesome-logo {
+	color: white;
+	font-size: 80px;
+}

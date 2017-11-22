@@ -8,6 +8,7 @@ $orange: #E57254;
 $yellow: #E5C454;
 $lightgrey: #D6D8DE;
 $darkslategrey: #484848;
+$black: #333;
 
 .blue {
 	color: $blue;
@@ -167,3 +168,5 @@ a {
 @import "subjects";
 @import "questions";
 @import "homepage";
+@import "custom";
+@import "pages";
