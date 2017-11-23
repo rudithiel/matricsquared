@@ -22,7 +22,13 @@
 
 /* All javascripts not belonging to a specific controller/model */
 
-$(document).ready(function(){
+
+$(document).ready(ready());
+$(document).on('turbolinks:load', ready());
+$(document).on('turbolinks:ready', ready());
+
+
+function ready(){
   
   $('#nav-collapse-toggler').click(function() {
     if ($(this).attr("aria-expanded") == "false") {
@@ -42,6 +48,6 @@ $(document).ready(function(){
     $('html, body').animate({ 
       scrollTop: $("#how-it-works").offset().top
     }, 200);
-  })
+  });
   
-});
+}
