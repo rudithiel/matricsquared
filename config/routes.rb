@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   
   get '/practice/next', to: 'questions#next_question', as: 'next_question'
   
+  #FORUM
+  get 'forum', to: 'forums#home', as: 'forum'
+  get 'forum/:code', to: 'forums#show', as: 'show_forum'
+  get 'forum/:code/:id', to: 'forums#show_question', as: 'show_forum_question'
+  
   #USERS
   get '/users/:username', to: 'users#show', as: 'user'
   

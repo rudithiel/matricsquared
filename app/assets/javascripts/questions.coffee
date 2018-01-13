@@ -84,7 +84,7 @@ $(document).on 'turbolinks:load', ->
                 $('#question-option-label-' + question_answer).addClass("btn-success")
                 $('#question-option-label-' + question_answer).removeClass("btn-outline-warning")
                 $('#question-answer-submit').addClass("disabled")
-                $("#question-answer-submit").prop("disabled", "disabled")
+                $('#skip-question-button').addClass("disabled")
                 $('#question-results').show()
                 if user_answer == question_answer
                   $('#question-result-alert').addClass("alert alert-success")

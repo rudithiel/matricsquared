@@ -81,3 +81,60 @@
 .bg-black {
 	background-color: #333333;
 }
+
+.button-red {
+	background-color: transparent;
+	color: $red;
+	text-align: center;
+	padding: auto;
+	border-radius: 50px;
+	border: 2px solid $red;
+	&:hover {
+		color: #333;
+	  background-color: $red;	
+	}
+}
+
+.button-orange {
+	background-color: transparent;
+	width: 150px;
+	height: 50px;
+	color: #E57254;
+	border-radius: 50px;
+	border: 2px solid $orange;
+	&:hover {
+		color: #333;
+	  background-color: $orange;	
+	}
+}
+
+.button-orange {
+	background-color: transparent;
+
+	color: #E57254;
+	border-radius: 50px;
+	border: 2px solid $orange;
+	&:hover {
+		color: #333;
+	  background-color: $orange;	
+	}
+}
+
+.button-circle {
+	width: 50px;
+	height: 50px;	
+	margin: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+}
+
+.button {
+	display: inline-block;
+}
+
+.button-text {
+	display: inline-block;
+	vertical-align: middle;
+}

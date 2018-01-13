@@ -120,6 +120,14 @@ body {
   }
 }
 
+.social-link {
+  color: white;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .big-checkbox {
   width: 20px;
   height: 20px;

@@ -22,13 +22,9 @@
 
 /* All javascripts not belonging to a specific controller/model */
 
+var ready;
 
-$(document).ready(ready());
-$(document).on('turbolinks:load', ready());
-$(document).on('turbolinks:ready', ready());
-
-
-function ready(){
+ready = function(){
   
   $('#nav-collapse-toggler').click(function() {
     if ($(this).attr("aria-expanded") == "false") {
@@ -40,14 +36,9 @@ function ready(){
     }
   });
   
-  $('.counter').counterUp({
-    time: 1500
-  });
+
   
-  $('#learn-more-button').click(function(){
-    $('html, body').animate({ 
-      scrollTop: $("#how-it-works").offset().top
-    }, 200);
-  });
-  
-}
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', ready);
