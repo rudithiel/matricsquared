@@ -4,9 +4,12 @@
 ready = ->
   $('#paper-2-categories').hide()
   $('#paper-2-practice').hide()
+  $('#test-paper-2').hide()
   
   $('#paper-1-toggle').click (e) ->
     e.stopImmediatePropagation()
+    $('#test-paper-2').hide()
+    $('#test-paper-1').show()
     $('#paper-1-categories').show()
     $('#paper-2-categories').hide()
     $('#paper-2-toggle').removeClass("active")
@@ -16,6 +19,8 @@ ready = ->
     
   $('#paper-2-toggle').click (e) ->
     e.stopImmediatePropagation()
+    $('#test-paper-1').hide()
+    $('#test-paper-2').show()
     $('#paper-2-categories').show()
     $('#paper-1-categories').hide()
     $('#paper-1-toggle').removeClass("active")

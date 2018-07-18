@@ -6,8 +6,11 @@
       <button id="paper-2-toggle" class="btn btn-outline-warning btn-lg">Paper 2</button>
     </div>
     <div class="mt-2 ml-4">
+      
       <%= link_to "Practice entire paper 1", paper_practice_path(@subject.code, 1),id:"paper-1-practice", class:"btn btn-warning btn-lg"  %>
+      <%= link_to "Test paper 1", test_paper_path(@subject.id, 1), id:"test-paper-1", class:"btn btn-warning btn-lg"  %>
       <%= link_to "Practice entire paper 2", paper_practice_path(@subject.code, 2),id:"paper-2-practice", class:"btn btn-warning btn-lg"  %>
+      <%= link_to "Test paper 2", test_paper_path(@subject.id, 2), id:"test-paper-2", class:"btn btn-warning btn-lg"  %>
     </div>
   </div>
     <div id="paper-1-categories">

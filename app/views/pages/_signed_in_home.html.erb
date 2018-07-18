@@ -1,24 +1,34 @@
 <div class="container mt-4">
   <h1 align="center">
-    My subjects
+    I want to practice...
   </h1>
-  <% if current_user.subjects.any? %>
-    <div class="row">
-      <% current_user.subjects.each do |subject| %>
-        <div class="col-12 col-md-6 p-3 row">
-          <div class="col-4">
-            <%= link_to image_tag(subject.avatar.url, class: "rounded-circle border border-secondary", style: "float:right", :width => "80%", :crop => :fill), show_subject_path(subject.code) %>
-          </div>
-          <div class="col-8">
-            <h4 class="ml-2" style="font-size: 2rem"><%= link_to subject.name, show_subject_path(subject.code), class: "text-white" %></h4>  
-          </div>
-          
-        </div>  
-      <% end %>
+  <% Subject.all.each do |subject| %>
+    <div class="col-md-6">
+      <%= link_to image_tag(subject.banner.url, :width => "100%"), show_subject_path(subject.code) %>
     </div>
-    <% else %>
-      <div class="center mt-3">
-        <h4>You have no subjects yet, you can add subjects <%= link_to "here", edit_subjects_path %></h4>
-      </div>
-    <% end %>
+  <% end %>
 </div>
+  
+  
+  
+  
+  
+<!-- LEGACY  -->
+<!--<%# if current_user.subjects.any? %>
+  <div class="row">
+    <%# current_user.subjects.each do |subject| %>
+      <div class="col-12 col-md-6 p-3 row">
+        <div class="col-4">
+          <%#= link_to image_tag(subject.avatar.url, class: "rounded-circle border border-secondary", style: "float:right", :width => "80%", :crop => :fill), show_subject_path(subject.code) %>
+        </div>
+        <div class="col-8">
+          <h4 class="ml-2" style="font-size: 2rem"><%#= link_to subject.name, show_subject_path(subject.code), class: "text-white" %></h4>  
+        </div>
+      </div>  
+    <%# end %>
+  </div>
+  <%# else %>
+    <div class="center mt-3">
+      <h4>You have no subjects yet, you can add subjects <%#= link_to "here", edit_subjects_path %></h4>
+    </div>
+  <%# end %>-->
